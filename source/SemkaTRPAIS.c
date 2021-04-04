@@ -27,6 +27,9 @@
 #define BUTTON_3 0xc3
 #define BUTTON_4 0xc4
 
+#define HORNY_NARAZNIK 0xe5
+#define DOLNY_NARAZNIK 0xdf
+
 #define START_BYTE 0xA0
 #define ACK_BYTE 0xA1
 #define MY_ADDRESS 0x00
@@ -36,6 +39,7 @@
 #define ENGINE_ADDRESS 0xf1
 #define ENGINE_UP 70
 #define ENGINE_DOWN -70
+#define ENGINE_STOP 0
 #define MESSAGE_RECEIVER_ADDRESS 0
 #define MESSAGE_SENDER_ADDRESS 1
 #define MESSAGE_VELKOST_DAT 2
@@ -104,6 +108,13 @@ void engine(int32_t speed) {
 //	vyskladana sprava pre vytah
 	LPSCI_WriteBlocking(UART0, packet, sizeof(packet));
 }
+
+void engine_speed() {
+	uint8_t vypocetcrc[] = {ENGINE_ADDRESS, MY_ADDRESS, 0x04}
+	uint8_t vysledokcrc = genrcrc(vypocetcrc, sizeof(vypocetcrc));
+	uint8_t packet[] = { START_BYTE, ENGINE_ADDRESS, MY_ADDRESS, 0x01, 0x03, vysledokcrc };
+	LPSCI_WriteBlocking(UART0, packet, sizeof(packet));
+}
 void ack(uint8_t Adresa_prijimatela) {
 	uint8_t vypocetcrc[] = { Adresa_prijimatela, MY_ADDRESS };
 	uint8_t vysledokcrc = gencrc(vypocetcrc, sizeof(vypocetcrc));
@@ -152,12 +163,15 @@ void UART0_IRQHandler(void) {
 			process_message = 1;
 			break;
 		case 6:
+			message[MESSAGE_SENDER_ADDRESS];
 			stav_citania = 7;
 			break;
 		case 7:
+			message[MESSAGE_RECEIVER_ADDRESS];
 			stav_citania = 8;
 			break;
 		case 8:
+			process_message = 2;
 			stav_citania = 9;
 			break;
 		case 9:
@@ -195,8 +209,12 @@ int main(void) {
 	/* Enter an infinite loop, just incrementing a counter. */
 	printf("nieco\n");
 	uint8_t led1 = 0, led2 = 0, led3 = 0, led4 = 0, led5 = 0;
+	engine(ENGINE_DOWN);
+
+	uint8_t direction = ENGINE_DOWN;
 	while (1) {
 		if (process_message == 1) {
+			process_message = 0;
 			ack(message[MESSAGE_SENDER_ADDRESS]);
 			switch (message[MESSAGE_SENDER_ADDRESS]) {
 			case BUTTON_P:
@@ -214,14 +232,45 @@ int main(void) {
 			case BUTTON_3:
 				led4 = !led4;
 				set_led(led4, LED4_ADDRESS);
+				engine(ENGINE_DOWN);
 				break;
 			case BUTTON_4:
 				led5 = !led5;
 				set_led(led5, LED5_ADDRESS);
+				engine(ENGINE_UP);
+				break;
+
+			case HORNY_NARAZNIK:
+				engine(ENGINE_DOWN);
+				break;
+			case 0xe1:
+				engine(ENGINE_UP);
+				engine_speed();
 				break;
 			default:break;
 			}
+
+
+		}
+
+		if (process_message == 2) {
 			process_message = 0;
+//			switch (message[MESSAGE_RECEIVER_ADDRESS]) {
+//			case ENGINE_ADDRESS:
+//				if (engine_direction == ENGINE_DOWN) {
+//					engine_direction = ENGINE_UP;
+//					engine(ENGINE_UP);
+//				} else if (engine_direction == ENGINE_UP){
+//					engine_direction = ENGINE_DOWN;
+//					engine(ENGINE_DOWN);
+//				} else {
+//					engine_direction = ENGINE_DOWN;
+//				}
+//				break;
+//			default:
+//				break;
+//			}
+
 		}
 //		printf("current state %d\n", stav_citania);
 //    	engine(ENGINE_UP);
