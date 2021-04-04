@@ -1,0 +1,11 @@
+core_cm0plus.h:745:22:NVIC_EnableIRQ	16	static
+fsl_clock.h:620:20:CLOCK_SetLpsci0Clock	16	static
+fsl_common.h:212:20:EnableIRQ	16	static
+fsl_lpsci.h:516:23:LPSCI_ReadByte	16	static
+SemkaTRPAIS.c:56:9:gencrc	32	static
+SemkaTRPAIS.c:71:6:delay	24	static
+SemkaTRPAIS.c:83:6:set_led	40	static
+SemkaTRPAIS.c:91:6:engine	48	static
+SemkaTRPAIS.c:101:6:ack	40	static
+SemkaTRPAIS.c:108:6:UART0_IRQHandler	8	static
+SemkaTRPAIS.c:150:5:main	16	static
