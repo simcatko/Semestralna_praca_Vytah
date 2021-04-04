@@ -20,6 +20,13 @@
 #define LED5_ADDRESS 0x14
 #define LED_ON 0x01
 #define LED_OFF 0x00
+
+#define BUTTON_P 0xc0
+#define BUTTON_1 0xc1
+#define BUTTON_2 0xc2
+#define BUTTON_3 0xc3
+#define BUTTON_4 0xc4
+
 #define START_BYTE 0xA0
 #define ACK_BYTE 0xA1
 #define MY_ADDRESS 0x00
@@ -33,14 +40,13 @@
 #define MESSAGE_SENDER_ADDRESS 1
 #define MESSAGE_VELKOST_DAT 2
 
-
 volatile uint8_t Sprava[10], Index = 0;
 volatile uint8_t Sprava_Complete = 0;
 uint8_t stav_citania = 0;
 uint8_t message[262];
 uint8_t zostavajucedata;
 uint8_t data[256];
-uint8_t data_index =0;
+uint8_t data_index = 0;
 uint8_t process_message = 0;
 
 char znak;
@@ -101,7 +107,8 @@ void engine(int32_t speed) {
 void ack(uint8_t Adresa_prijimatela) {
 	uint8_t vypocetcrc[] = { Adresa_prijimatela, MY_ADDRESS };
 	uint8_t vysledokcrc = gencrc(vypocetcrc, sizeof(vypocetcrc));
-	uint8_t packet[] = { ACK_BYTE, Adresa_prijimatela, MY_ADDRESS, 0x00,vysledokcrc };
+	uint8_t packet[] = { ACK_BYTE, Adresa_prijimatela, MY_ADDRESS, 0x00,
+			vysledokcrc };
 	LPSCI_WriteBlocking(UART0, packet, sizeof(packet));
 }
 
@@ -112,6 +119,8 @@ void UART0_IRQHandler(void) {
 		switch (stav_citania) {
 		case 0:
 			if (znak == 0xA0) stav_citania = 1;
+			else if (znak == 0xA1) stav_citania = 6;
+			else process_message = 3;
 			break;
 		case 1:
 			message[MESSAGE_RECEIVER_ADDRESS] = znak;
@@ -133,7 +142,7 @@ void UART0_IRQHandler(void) {
 			break;
 		case 4:
 			if (data_index < message[MESSAGE_VELKOST_DAT]) {
-				data[data_index++]=znak;
+				data[data_index++] = znak;
 			} else {
 				stav_citania = 5;
 			}
@@ -141,7 +150,18 @@ void UART0_IRQHandler(void) {
 		case 5:
 			stav_citania = 0;
 			process_message = 1;
-//			spracuj_spravu();
+			break;
+		case 6:
+			stav_citania = 7;
+			break;
+		case 7:
+			stav_citania = 8;
+			break;
+		case 8:
+			stav_citania = 9;
+			break;
+		case 9:
+			stav_citania = 0;
 			break;
 		}
 	}
@@ -174,10 +194,33 @@ int main(void) {
 
 	/* Enter an infinite loop, just incrementing a counter. */
 	printf("nieco\n");
+	uint8_t led1 = 0, led2 = 0, led3 = 0, led4 = 0, led5 = 0;
 	while (1) {
-		if (process_message) {
+		if (process_message == 1) {
 			ack(message[MESSAGE_SENDER_ADDRESS]);
-			printf("nacitana sprava %x prijimatel %x odosielatel %x data length\n", message[MESSAGE_RECEIVER_ADDRESS],message[MESSAGE_SENDER_ADDRESS], message[MESSAGE_VELKOST_DAT]);
+			switch (message[MESSAGE_SENDER_ADDRESS]) {
+			case BUTTON_P:
+				led1 = !led1;
+				set_led(led1, LED1_ADDRESS);
+				break;
+			case BUTTON_1:
+				led2 = !led2;
+				set_led(led2, LED2_ADDRESS);
+				break;
+			case BUTTON_2:
+				led3 = !led3;
+				set_led(led3, LED3_ADDRESS);
+				break;
+			case BUTTON_3:
+				led4 = !led4;
+				set_led(led4, LED4_ADDRESS);
+				break;
+			case BUTTON_4:
+				led5 = !led5;
+				set_led(led5, LED5_ADDRESS);
+				break;
+			default:break;
+			}
 			process_message = 0;
 		}
 //		printf("current state %d\n", stav_citania);
