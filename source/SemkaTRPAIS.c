@@ -107,12 +107,7 @@ void delay(int Milisekundy) {
 	}
 }
 
-//void set_led(uint8_t led_on_off){
-//	uint8_t vypocetcrc[] = { LED1_ADDRESS, MY_ADDRESS, led_on_off };
-//	uint8_t vysledok = gencrc(vypocetcrc, sizeof(vypocetcrc));
-//	uint8_t led_packet_header[] = { START_BYTE, LED1_ADDRESS, MY_ADDRESS, 1, led_on_off, vysledok };
-//	LPSCI_WriteBlocking(UART0, led_packet_header, sizeof(led_packet_header));
-//}
+
 void set_led(uint8_t led_on_off, uint8_t leds) {
 	uint8_t vypocetcrc[] = { leds, MY_ADDRESS, led_on_off };
 	uint8_t vysledok = gencrc(vypocetcrc, sizeof(vypocetcrc));
@@ -217,16 +212,11 @@ void UART0_IRQHandler(void) {
 }
 
 int main(void) {
-//uint8_t vypocetcrc[] = {ENGINE_ADDRESS, MY_ADDRESS, }
-//	uint8_t crc =  gencrc();
-	/* Init board hardware. */
+
 	BOARD_InitBootPins();
 	BOARD_InitBootClocks();
 	BOARD_InitBootPeripherals();
-//#ifndef BOARD_INIT_DEBUG_CONSOLE_PERIPHERAL
-	/* Init FSL debug console. */
-//    BOARD_InitDebugConsole();
-//#endif
+
 	lpsci_config_t config;
 	BOARD_BootClockRUN();
 	CLOCK_SetLpsci0Clock(0x1U);
@@ -235,13 +225,11 @@ int main(void) {
 	config.enableTx = true;
 	config.enableRx = true;
 
-//    PRINTF("Hello World\n");
+
 	LPSCI_Init(UART0, &config, CLOCK_GetFreq(kCLOCK_CoreSysClk));
 	LPSCI_EnableInterrupts(UART0, kLPSCI_RxDataRegFullInterruptEnable);
 	EnableIRQ(UART0_IRQn);
-	/* Force the counter to be placed into memory. */
 
-	/* Enter an infinite loop, just incrementing a counter. */
 	printf("nieco\n");
 	uint8_t led1 = 0, led2 = 0, led3 = 0, led4 = 0, led5 = 0;
 	engine(ENGINE_DOWN);
@@ -255,13 +243,8 @@ int main(void) {
 			ack(message[MESSAGE_SENDER_ADDRESS]);
 			switch (message[MESSAGE_SENDER_ADDRESS]) {
 			case BUTTON_P:
-//				led1 = !led1;
-//				set_led(led1, LED1_ADDRESS);
-//				char msg[] = "Test\n";
-//				terminal(msg, sizeof(msg));
-//				destination = DESTINATION_FLOOR_P;
-//				engine(ENGINE_DOWN);
 				destination = DESTINATION_FLOOR_P;
+				set_led(LOCK_THE_DOOR, ELEVATOR_ADDRESS);
 				switch(position) {
 				case DESTINATION_FLOOR_P: engine(ENGINE_STOP); break;
 				case DESTINATION_FLOOR_1: engine(ENGINE_DOWN); break;
@@ -269,12 +252,11 @@ int main(void) {
 				case DESTINATION_FLOOR_3: engine(ENGINE_DOWN); break;
 				case DESTINATION_FLOOR_4: engine(ENGINE_DOWN); break;
 				}
+				set_led(LED_ON, LED1_ADDRESS);
 				break;
 			case BUTTON_1:
-//				led2 = !led2;
-//				set_led(led2, LED2_ADDRESS);
-//				destination = DESTINATION_FLOOR_1;
 				destination = DESTINATION_FLOOR_1;
+				set_led(LOCK_THE_DOOR, ELEVATOR_ADDRESS);
 				switch(position) {
 				case DESTINATION_FLOOR_P: engine(ENGINE_UP); break;
 				case DESTINATION_FLOOR_1: engine(ENGINE_STOP); break;
@@ -282,13 +264,11 @@ int main(void) {
 				case DESTINATION_FLOOR_3: engine(ENGINE_DOWN); break;
 				case DESTINATION_FLOOR_4: engine(ENGINE_DOWN); break;
 				}
+				set_led(LED_ON, LED2_ADDRESS);
 				break;
 			case BUTTON_2:
-//				led3 = !led3;
-//				set_led(led3, LED3_ADDRESS);
-//				door(led3);
-//				destination = DESTINATION_FLOOR_2;
 				destination = DESTINATION_FLOOR_2;
+				set_led(LOCK_THE_DOOR, ELEVATOR_ADDRESS);
 				switch(position) {
 				case DESTINATION_FLOOR_P: engine(ENGINE_UP); break;
 				case DESTINATION_FLOOR_1: engine(ENGINE_UP); break;
@@ -296,12 +276,11 @@ int main(void) {
 				case DESTINATION_FLOOR_3: engine(ENGINE_DOWN); break;
 				case DESTINATION_FLOOR_4: engine(ENGINE_DOWN); break;
 				}
+				set_led(LED_ON, LED3_ADDRESS);
 				break;
 			case BUTTON_3:
-//				led4 = !led4;
-//				set_led(led4, LED4_ADDRESS);
-//				engine(ENGINE_DOWN);
 				destination = DESTINATION_FLOOR_3;
+				set_led(LOCK_THE_DOOR, ELEVATOR_ADDRESS);
 				switch(position) {
 				case DESTINATION_FLOOR_P: engine(ENGINE_UP); break;
 				case DESTINATION_FLOOR_1: engine(ENGINE_UP); break;
@@ -309,13 +288,11 @@ int main(void) {
 				case DESTINATION_FLOOR_3: engine(ENGINE_STOP); break;
 				case DESTINATION_FLOOR_4: engine(ENGINE_DOWN); break;
 				}
+				set_led(LED_ON, LED4_ADDRESS);
 				break;
 			case BUTTON_4:
-//				led5 = !led5;
-//				set_led(led5, LED5_ADDRESS);
-//				destination = DESTINATION_FLOOR_4;
-//				engine(ENGINE_DOWN);
-				destination = DESTINATION_FLOOR_3;
+				destination = DESTINATION_FLOOR_4;
+				set_led(LOCK_THE_DOOR, ELEVATOR_ADDRESS);
 				switch(position) {
 				case DESTINATION_FLOOR_P: engine(ENGINE_UP); break;
 				case DESTINATION_FLOOR_1: engine(ENGINE_UP); break;
@@ -323,6 +300,7 @@ int main(void) {
 				case DESTINATION_FLOOR_3: engine(ENGINE_UP); break;
 				case DESTINATION_FLOOR_4: engine(ENGINE_STOP); break;
 				}
+				set_led(LED_ON, LED5_ADDRESS);
 				break;
 				break;
 
@@ -333,32 +311,44 @@ int main(void) {
 			case FLOOR_P_SWITCH:
 				position = DESTINATION_FLOOR_P;
 				switch(destination) {
-				case DESTINATION_FLOOR_P: engine(ENGINE_STOP); break;
+				case DESTINATION_FLOOR_P:
+					engine(ENGINE_STOP);
+					set_led(UNLOCK_THE_DOOR, ELEVATOR_ADDRESS);
+					break;
 				case DESTINATION_FLOOR_1: engine(ENGINE_UP); break;
 				case DESTINATION_FLOOR_2: engine(ENGINE_UP); break;
 				case DESTINATION_FLOOR_3: engine(ENGINE_UP); break;
 				case DESTINATION_FLOOR_4: engine(ENGINE_UP); break;
 				}
+				set_led(LED_OFF, LED1_ADDRESS);
 				break;
 			case FLOOR_1_SWITCH:
 				position = DESTINATION_FLOOR_1;
 				switch(destination) {
 				case DESTINATION_FLOOR_P: engine(ENGINE_DOWN); break;
-				case DESTINATION_FLOOR_1: engine(ENGINE_STOP); break;
+				case DESTINATION_FLOOR_1:
+					engine(ENGINE_STOP);
+					set_led(UNLOCK_THE_DOOR, ELEVATOR_ADDRESS);
+					break;
 				case DESTINATION_FLOOR_2: engine(ENGINE_UP); break;
 				case DESTINATION_FLOOR_3: engine(ENGINE_UP); break;
 				case DESTINATION_FLOOR_4: engine(ENGINE_UP); break;
 				}
+				set_led(LED_OFF, LED2_ADDRESS);
 				break;
 			case FLOOR_2_SWITCH:
 				position = DESTINATION_FLOOR_2;
 				switch(destination) {
 				case DESTINATION_FLOOR_P: engine(ENGINE_DOWN); break;
 				case DESTINATION_FLOOR_1: engine(ENGINE_DOWN); break;
-				case DESTINATION_FLOOR_2: engine(ENGINE_STOP); break;
+				case DESTINATION_FLOOR_2:
+					engine(ENGINE_STOP);
+					set_led(UNLOCK_THE_DOOR, ELEVATOR_ADDRESS);
+					break;
 				case DESTINATION_FLOOR_3: engine(ENGINE_UP); break;
 				case DESTINATION_FLOOR_4: engine(ENGINE_UP); break;
 				}
+				set_led(LED_OFF, LED3_ADDRESS);
 				break;
 			case FLOOR_3_SWITCH:
 				position = DESTINATION_FLOOR_3;
@@ -366,9 +356,13 @@ int main(void) {
 				case DESTINATION_FLOOR_P: engine(ENGINE_DOWN); break;
 				case DESTINATION_FLOOR_1: engine(ENGINE_DOWN); break;
 				case DESTINATION_FLOOR_2: engine(ENGINE_DOWN); break;
-				case DESTINATION_FLOOR_3: engine(ENGINE_STOP); break;
+				case DESTINATION_FLOOR_3:
+					engine(ENGINE_STOP);
+					set_led(UNLOCK_THE_DOOR, ELEVATOR_ADDRESS);
+					break;
 				case DESTINATION_FLOOR_4: engine(ENGINE_UP); break;
 				}
+				set_led(LED_OFF, LED4_ADDRESS);
 				break;
 
 			case FLOOR_4_SWITCH:
@@ -378,8 +372,12 @@ int main(void) {
 				case DESTINATION_FLOOR_1: engine(ENGINE_DOWN); break;
 				case DESTINATION_FLOOR_2: engine(ENGINE_DOWN); break;
 				case DESTINATION_FLOOR_3: engine(ENGINE_DOWN); break;
-				case DESTINATION_FLOOR_4: engine(ENGINE_STOP); break;
+				case DESTINATION_FLOOR_4:
+					engine(ENGINE_STOP);
+					set_led(UNLOCK_THE_DOOR, ELEVATOR_ADDRESS);
+					break;
 				}
+				set_led(LED_OFF, LED5_ADDRESS);
 				break;
 
 			case MY_ADDRESS:
@@ -401,43 +399,8 @@ int main(void) {
 
 		if (process_message == 2) {
 			process_message = 0;
-//			switch (message[MESSAGE_RECEIVER_ADDRESS]) {
-//			case ENGINE_ADDRESS:
-//				if (engine_direction == ENGINE_DOWN) {
-//					engine_direction = ENGINE_UP;
-//					engine(ENGINE_UP);
-//				} else if (engine_direction == ENGINE_UP){
-//					engine_direction = ENGINE_DOWN;
-//					engine(ENGINE_DOWN);
-//				} else {
-//					engine_direction = ENGINE_DOWN;
-//				}
-//				break;
-//			default:
-//				break;
-//			}
 
 		}
-//		printf("current state %d\n", stav_citania);
-//    	engine(ENGINE_UP);
-//		delay(2000);
-//		set_led(LED_ON, LED1_ADDRESS);
-//		set_led(LOCK_THE_DOOR, DOOR_ADDRESS);
-//
-//		set_led(LED_ON, LED2_ADDRESS);
-//		set_led(LED_ON, LED3_ADDRESS);
-//		set_led(LED_ON, LED4_ADDRESS);
-//
-//		set_led(LED_ON, LED5_ADDRESS);
-//
-//		engine(ENGINE_DOWN);
-//		delay(2000);
-//		set_led(LED_OFF, LED1_ADDRESS);
-//		set_led(UNLOCK_THE_DOOR, DOOR_ADDRESS);
-//		set_led(LED_OFF, LED2_ADDRESS);
-//		set_led(LED_OFF, LED3_ADDRESS);
-//		set_led(LED_OFF, LED4_ADDRESS);
-//		set_led(LED_OFF, LED5_ADDRESS);
 	}
 	return 0;
 }
