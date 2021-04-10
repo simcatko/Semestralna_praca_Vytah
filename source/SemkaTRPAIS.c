@@ -222,6 +222,19 @@ uint8_t Handle_switch(uint8_t destination,uint8_t my_floor, uint8_t led_address)
 	return my_floor;
 }
 
+uint8_t Handle_button(uint8_t position, uint8_t my_floor, uint8_t led_address) {
+	if(position > my_floor) {
+		engine(ENGINE_DOWN);
+		set_led(LOCK_THE_DOOR, ELEVATOR_ADDRESS);
+		set_led(LED_ON, led_address);
+	}
+	else if(position < my_floor) {
+		engine(ENGINE_UP);
+		set_led(LOCK_THE_DOOR, ELEVATOR_ADDRESS);
+		set_led(LED_ON, led_address);
+	}
+	return my_floor;
+}
 int main(void) {
 
 	BOARD_InitBootPins();
@@ -254,65 +267,19 @@ int main(void) {
 			ack(message[MESSAGE_SENDER_ADDRESS]);
 			switch (message[MESSAGE_SENDER_ADDRESS]) {
 			case BUTTON_P:
-				destination = DESTINATION_FLOOR_P;
-				set_led(LOCK_THE_DOOR, ELEVATOR_ADDRESS);
-				switch(position) {
-				case DESTINATION_FLOOR_P: engine(ENGINE_STOP); break;
-				case DESTINATION_FLOOR_1: engine(ENGINE_DOWN); break;
-				case DESTINATION_FLOOR_2: engine(ENGINE_DOWN); break;
-				case DESTINATION_FLOOR_3: engine(ENGINE_DOWN); break;
-				case DESTINATION_FLOOR_4: engine(ENGINE_DOWN); break;
-				}
-				set_led(LED_ON, LED1_ADDRESS);
+				destination = Handle_button(position, DESTINATION_FLOOR_P, LED1_ADDRESS);
 				break;
 			case BUTTON_1:
-				destination = DESTINATION_FLOOR_1;
-				set_led(LOCK_THE_DOOR, ELEVATOR_ADDRESS);
-				switch(position) {
-				case DESTINATION_FLOOR_P: engine(ENGINE_UP); break;
-				case DESTINATION_FLOOR_1: engine(ENGINE_STOP); break;
-				case DESTINATION_FLOOR_2: engine(ENGINE_DOWN); break;
-				case DESTINATION_FLOOR_3: engine(ENGINE_DOWN); break;
-				case DESTINATION_FLOOR_4: engine(ENGINE_DOWN); break;
-				}
-				set_led(LED_ON, LED2_ADDRESS);
+				destination = Handle_button(position, DESTINATION_FLOOR_1, LED2_ADDRESS);
 				break;
 			case BUTTON_2:
-				destination = DESTINATION_FLOOR_2;
-				set_led(LOCK_THE_DOOR, ELEVATOR_ADDRESS);
-				switch(position) {
-				case DESTINATION_FLOOR_P: engine(ENGINE_UP); break;
-				case DESTINATION_FLOOR_1: engine(ENGINE_UP); break;
-				case DESTINATION_FLOOR_2: engine(ENGINE_STOP); break;
-				case DESTINATION_FLOOR_3: engine(ENGINE_DOWN); break;
-				case DESTINATION_FLOOR_4: engine(ENGINE_DOWN); break;
-				}
-				set_led(LED_ON, LED3_ADDRESS);
+				destination = Handle_button(position, DESTINATION_FLOOR_2, LED3_ADDRESS);
 				break;
 			case BUTTON_3:
-				destination = DESTINATION_FLOOR_3;
-				set_led(LOCK_THE_DOOR, ELEVATOR_ADDRESS);
-				switch(position) {
-				case DESTINATION_FLOOR_P: engine(ENGINE_UP); break;
-				case DESTINATION_FLOOR_1: engine(ENGINE_UP); break;
-				case DESTINATION_FLOOR_2: engine(ENGINE_UP); break;
-				case DESTINATION_FLOOR_3: engine(ENGINE_STOP); break;
-				case DESTINATION_FLOOR_4: engine(ENGINE_DOWN); break;
-				}
-				set_led(LED_ON, LED4_ADDRESS);
+				destination = Handle_button(position, DESTINATION_FLOOR_3, LED4_ADDRESS);
 				break;
 			case BUTTON_4:
-				destination = DESTINATION_FLOOR_4;
-				set_led(LOCK_THE_DOOR, ELEVATOR_ADDRESS);
-				switch(position) {
-				case DESTINATION_FLOOR_P: engine(ENGINE_UP); break;
-				case DESTINATION_FLOOR_1: engine(ENGINE_UP); break;
-				case DESTINATION_FLOOR_2: engine(ENGINE_UP); break;
-				case DESTINATION_FLOOR_3: engine(ENGINE_UP); break;
-				case DESTINATION_FLOOR_4: engine(ENGINE_STOP); break;
-				}
-				set_led(LED_ON, LED5_ADDRESS);
-				break;
+				destination = Handle_button(position, DESTINATION_FLOOR_4, LED5_ADDRESS);
 				break;
 
 			case HORNY_NARAZNIK:
