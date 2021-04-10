@@ -211,6 +211,17 @@ void UART0_IRQHandler(void) {
 	}
 }
 
+uint8_t Handle_switch(uint8_t destination,uint8_t my_floor, uint8_t led_address) {
+	if(destination > my_floor) engine(ENGINE_UP);
+	else if(destination < my_floor) engine(ENGINE_DOWN);
+	else {
+		engine(ENGINE_STOP);
+		set_led(UNLOCK_THE_DOOR, ELEVATOR_ADDRESS);
+		set_led(LED_OFF, led_address);
+	}
+	return my_floor;
+}
+
 int main(void) {
 
 	BOARD_InitBootPins();
@@ -309,75 +320,20 @@ int main(void) {
 				break;
 
 			case FLOOR_P_SWITCH:
-				position = DESTINATION_FLOOR_P;
-				switch(destination) {
-				case DESTINATION_FLOOR_P:
-					engine(ENGINE_STOP);
-					set_led(UNLOCK_THE_DOOR, ELEVATOR_ADDRESS);
-					break;
-				case DESTINATION_FLOOR_1: engine(ENGINE_UP); break;
-				case DESTINATION_FLOOR_2: engine(ENGINE_UP); break;
-				case DESTINATION_FLOOR_3: engine(ENGINE_UP); break;
-				case DESTINATION_FLOOR_4: engine(ENGINE_UP); break;
-				}
-				set_led(LED_OFF, LED1_ADDRESS);
+				position = Handle_switch(destination, DESTINATION_FLOOR_P, LED1_ADDRESS);
 				break;
 			case FLOOR_1_SWITCH:
-				position = DESTINATION_FLOOR_1;
-				switch(destination) {
-				case DESTINATION_FLOOR_P: engine(ENGINE_DOWN); break;
-				case DESTINATION_FLOOR_1:
-					engine(ENGINE_STOP);
-					set_led(UNLOCK_THE_DOOR, ELEVATOR_ADDRESS);
-					break;
-				case DESTINATION_FLOOR_2: engine(ENGINE_UP); break;
-				case DESTINATION_FLOOR_3: engine(ENGINE_UP); break;
-				case DESTINATION_FLOOR_4: engine(ENGINE_UP); break;
-				}
-				set_led(LED_OFF, LED2_ADDRESS);
+				position = Handle_switch(destination, DESTINATION_FLOOR_1, LED2_ADDRESS);
 				break;
 			case FLOOR_2_SWITCH:
-				position = DESTINATION_FLOOR_2;
-				switch(destination) {
-				case DESTINATION_FLOOR_P: engine(ENGINE_DOWN); break;
-				case DESTINATION_FLOOR_1: engine(ENGINE_DOWN); break;
-				case DESTINATION_FLOOR_2:
-					engine(ENGINE_STOP);
-					set_led(UNLOCK_THE_DOOR, ELEVATOR_ADDRESS);
-					break;
-				case DESTINATION_FLOOR_3: engine(ENGINE_UP); break;
-				case DESTINATION_FLOOR_4: engine(ENGINE_UP); break;
-				}
-				set_led(LED_OFF, LED3_ADDRESS);
+				position = Handle_switch(destination, DESTINATION_FLOOR_2, LED3_ADDRESS);
 				break;
 			case FLOOR_3_SWITCH:
-				position = DESTINATION_FLOOR_3;
-				switch(destination) {
-				case DESTINATION_FLOOR_P: engine(ENGINE_DOWN); break;
-				case DESTINATION_FLOOR_1: engine(ENGINE_DOWN); break;
-				case DESTINATION_FLOOR_2: engine(ENGINE_DOWN); break;
-				case DESTINATION_FLOOR_3:
-					engine(ENGINE_STOP);
-					set_led(UNLOCK_THE_DOOR, ELEVATOR_ADDRESS);
-					break;
-				case DESTINATION_FLOOR_4: engine(ENGINE_UP); break;
-				}
-				set_led(LED_OFF, LED4_ADDRESS);
+				position = Handle_switch(destination, DESTINATION_FLOOR_3, LED4_ADDRESS);
 				break;
 
 			case FLOOR_4_SWITCH:
-				position = DESTINATION_FLOOR_4;
-				switch(destination) {
-				case DESTINATION_FLOOR_P: engine(ENGINE_DOWN); break;
-				case DESTINATION_FLOOR_1: engine(ENGINE_DOWN); break;
-				case DESTINATION_FLOOR_2: engine(ENGINE_DOWN); break;
-				case DESTINATION_FLOOR_3: engine(ENGINE_DOWN); break;
-				case DESTINATION_FLOOR_4:
-					engine(ENGINE_STOP);
-					set_led(UNLOCK_THE_DOOR, ELEVATOR_ADDRESS);
-					break;
-				}
-				set_led(LED_OFF, LED5_ADDRESS);
+				position = Handle_switch(destination, DESTINATION_FLOOR_4, LED5_ADDRESS);
 				break;
 
 			case MY_ADDRESS:
