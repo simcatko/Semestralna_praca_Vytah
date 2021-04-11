@@ -89,9 +89,20 @@ uint8_t data[256];
 uint8_t data_index = 0;
 uint8_t process_message = 0;
 
+typedef enum {
+	ARRIWING,
+	WAITING,
+	STOPPING,
+	LOCKING,
+	UNLOCKING,
+	MOVING
+} ElevatorDelayState;
+
 typedef struct elevator_state {
 	uint8_t position;
 	uint8_t destination;
+	uint32_t counter;
+	ElevatorDelayState state;
 } ElevatorState;
 
 typedef struct floor {
@@ -269,30 +280,10 @@ void UART0_IRQHandler(void) {
 }
 
 void Handle_switch(ElevatorState *elevator_state, Floor *floor) {
-	if (elevator_state->destination == floor->number) {
-		delay(1000);
-		engine(ENGINE_STOP);
-		delay(2000);
-		set_led(UNLOCK_THE_DOOR, ELEVATOR_ADDRESS);
-		set_led(LED_OFF, floor->door_led_address);
-		set_led(LED_OFF, floor->elevator_led_address);
-	}
-
 	elevator_state->position = floor->number;
 }
 
 void Handle_button(ElevatorState *elevator_state, Floor *floor) {
-	if (elevator_state->position > floor->number) {
-		engine(ENGINE_DOWN);
-		set_led(LOCK_THE_DOOR, ELEVATOR_ADDRESS);
-		set_led(LED_ON, floor->door_led_address);
-		set_led(LED_ON, floor->elevator_led_address);
-	} else if (elevator_state->position < floor->number) {
-		engine(ENGINE_UP);
-		set_led(LOCK_THE_DOOR, ELEVATOR_ADDRESS);
-		set_led(LED_ON, floor->door_led_address);
-		set_led(LED_ON, floor->elevator_led_address);
-	}
 	elevator_state->destination = floor->number;
 }
 
@@ -318,7 +309,9 @@ int main(void) {
 
 	ElevatorState elevator_state = {
 		.destination = FLOOR_P,
-		.position = FLOOR_P
+		.position = FLOOR_3,
+		.counter = 0,
+		.state = MOVING
 	};
 
 	while (1) {
@@ -344,6 +337,67 @@ int main(void) {
 			default: break;
 			}
 		}
+
+		switch(elevator_state.state) {
+		case MOVING:
+			if (elevator_state.position == elevator_state.destination) {
+				elevator_state.state = ARRIWING;
+				elevator_state.counter = 300000;
+			}
+			break;
+		case ARRIWING:
+			if (elevator_state.counter > 0) elevator_state.counter--;
+			else {
+				Floor *floor = &floors[elevator_state.destination];
+
+				set_led(LED_OFF, floor->door_led_address);
+				set_led(LED_OFF, floor->elevator_led_address);
+
+				engine(ENGINE_STOP);
+				elevator_state.state = STOPPING;
+				elevator_state.counter = 500000;
+			}
+			break;
+		case STOPPING:
+			if (elevator_state.counter > 0) elevator_state.counter--;
+			else {
+				set_led(UNLOCK_THE_DOOR, ELEVATOR_ADDRESS);
+				elevator_state.state = UNLOCKING;
+				elevator_state.counter = 500000;
+			}
+			break;
+		case UNLOCKING:
+			if (elevator_state.counter > 0) elevator_state.counter--;
+			else {
+				elevator_state.state = WAITING;
+			}
+			break;
+		case WAITING:
+			if (elevator_state.destination != elevator_state.position) {
+				Floor *floor = &floors[elevator_state.destination];
+
+				set_led(LED_ON, floor->door_led_address);
+				set_led(LED_ON, floor->elevator_led_address);
+				set_led(LOCK_THE_DOOR, ELEVATOR_ADDRESS);
+
+				elevator_state.state = LOCKING;
+				elevator_state.counter = 500000;
+			}
+			break;
+		case LOCKING:
+			if (elevator_state.counter > 0) elevator_state.counter--;
+			else {
+				if (elevator_state.destination < elevator_state.position) {
+					engine(ENGINE_DOWN);
+				} else {
+					engine(ENGINE_UP);
+				}
+				elevator_state.state = MOVING;
+			}
+			break;
+		default: break;
+		}
 	}
+
 	return 0;
 }
