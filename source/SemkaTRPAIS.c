@@ -89,16 +89,6 @@ uint8_t data[256];
 uint8_t data_index = 0;
 uint8_t process_message = 0;
 
-char znak;
-
-struct engine_movement {
-	uint8_t start_byte;
-	uint8_t receiver_address;
-	uint8_t sender_adress;
-	uint8_t data_size;
-	int32_t movement;
-	uint8_t crc;
-};
 uint8_t gencrc(uint8_t *data, size_t len) {
 	uint8_t crc = 0;
 	for (uint8_t i = 0; i < len; ++i) {
@@ -129,13 +119,12 @@ void set_led(uint8_t led_on_off, uint8_t leds) {
 }
 
 void engine(int32_t speed) {
-	uint8_t *speed8 = &speed;
+	uint8_t *speed8 = (uint8_t*)&speed;
 	uint8_t vypocetcrc[] = { ENGINE_ADDRESS, MY_ADDRESS, 0x02, speed8[0],
 			speed8[1], speed8[2], speed8[3] };
 	uint8_t vysledokcrc = gencrc(vypocetcrc, sizeof(vypocetcrc));
 	uint8_t packet[] = { START_BYTE, ENGINE_ADDRESS, MY_ADDRESS, 0x05, 0x02,
 			speed8[0], speed8[1], speed8[2], speed8[3], vysledokcrc };
-//	vyskladana sprava pre vytah
 	LPSCI_WriteBlocking(UART0, packet, sizeof(packet));
 }
 
@@ -179,7 +168,7 @@ void terminal(char *message, size_t length) {
 }
 
 void UART0_IRQHandler(void) {
-
+	uint8_t znak;
 	if (kLPSCI_RxDataRegFullFlag) {
 		znak = LPSCI_ReadByte(UART0);
 		switch (stav_citania) {
@@ -187,8 +176,7 @@ void UART0_IRQHandler(void) {
 			if (znak == 0xA0 || znak == 0xA1) {
 				stav_citania = 1;
 				message[MESSAGE_TYPE] = znak;
-			} else
-				process_message = 3;
+			}
 			break;
 		case 1:
 			message[MESSAGE_RECEIVER_ADDRESS] = znak;
@@ -273,13 +261,11 @@ int main(void) {
 	LPSCI_EnableInterrupts(UART0, kLPSCI_RxDataRegFullInterruptEnable);
 	EnableIRQ(UART0_IRQn);
 
-	printf("nieco\n");
-	uint8_t led1 = 0, led2 = 0, led3 = 0, led4 = 0, led5 = 0;
 	engine(ENGINE_DOWN);
 
-	uint8_t direction = ENGINE_DOWN;
 	uint8_t destination = DESTINATION_FLOOR_P;
 	uint8_t position = DESTINATION_FLOOR_P;
+
 	while (1) {
 		if (process_message == 1) {
 			process_message = 0;
@@ -325,11 +311,6 @@ int main(void) {
 				destination = Handle_button(position, DESTINATION_FLOOR_4,
 						LED5_ADDRESS, LED_IN_ELEVATOR_4_ADDRESS);
 				break;
-
-			case HORNY_NARAZNIK:
-				engine(ENGINE_DOWN);
-				break;
-
 			case FLOOR_P_SWITCH:
 				position = Handle_switch(destination, DESTINATION_FLOOR_P,
 						LED1_ADDRESS, LED_IN_ELEVATOR_P_ADDRESS);
@@ -352,26 +333,9 @@ int main(void) {
 						LED5_ADDRESS, LED_IN_ELEVATOR_4_ADDRESS);
 				break;
 
-			case MY_ADDRESS:
-				if (message[MESSAGE_TYPE] == ACK_BYTE) {
-
-				}
-				break;
-
-			case EMERGENCE_BREAK:
-				if (data[0] == DEACTIVATE_BREAK) {
-				} else {
-					engine(ENGINE_STOP);
-				}
 			default:
 				break;
 			}
-
-		}
-
-		if (process_message == 2) {
-			process_message = 0;
-
 		}
 	}
 	return 0;
