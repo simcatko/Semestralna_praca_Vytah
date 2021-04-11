@@ -98,9 +98,15 @@ typedef enum {
 	MOVING
 } ElevatorDelayState;
 
+typedef enum {
+	DESTINATION_VISIT,
+	DESTINATION_IGNORE
+} DestinationState;
+
 typedef struct elevator_state {
 	uint8_t position;
 	uint8_t destination;
+	DestinationState destinations[5];
 	uint32_t counter;
 	ElevatorDelayState state;
 } ElevatorState;
@@ -170,12 +176,6 @@ uint8_t gencrc(uint8_t *data, size_t len) {
 		}
 	}
 	return crc;
-}
-
-void delay(int Milisekundy) {
-	for (int i = 0; i <= Milisekundy * 1000; i++) {
-		__asm("nop");
-	}
 }
 
 void set_led(uint8_t led_on_off, uint8_t leds) {
@@ -284,7 +284,9 @@ void Handle_switch(ElevatorState *elevator_state, Floor *floor) {
 }
 
 void Handle_button(ElevatorState *elevator_state, Floor *floor) {
-	elevator_state->destination = floor->number;
+	set_led(LED_ON, floor->door_led_address);
+	set_led(LED_ON, floor->elevator_led_address);
+	elevator_state->destinations[floor->number] = DESTINATION_VISIT;
 }
 
 int main(void) {
@@ -309,6 +311,13 @@ int main(void) {
 
 	ElevatorState elevator_state = {
 		.destination = FLOOR_P,
+		.destinations = {
+			DESTINATION_VISIT,
+			DESTINATION_IGNORE,
+			DESTINATION_IGNORE,
+			DESTINATION_IGNORE,
+			DESTINATION_IGNORE
+		},
 		.position = FLOOR_3,
 		.counter = 0,
 		.state = MOVING
@@ -355,7 +364,7 @@ int main(void) {
 
 				engine(ENGINE_STOP);
 				elevator_state.state = STOPPING;
-				elevator_state.counter = 500000;
+				elevator_state.counter = 1000000;
 			}
 			break;
 		case STOPPING:
@@ -363,25 +372,30 @@ int main(void) {
 			else {
 				set_led(UNLOCK_THE_DOOR, ELEVATOR_ADDRESS);
 				elevator_state.state = UNLOCKING;
-				elevator_state.counter = 500000;
+				elevator_state.counter = 1000000;
 			}
 			break;
 		case UNLOCKING:
 			if (elevator_state.counter > 0) elevator_state.counter--;
 			else {
 				elevator_state.state = WAITING;
+				elevator_state.counter = 1000000;
 			}
 			break;
 		case WAITING:
-			if (elevator_state.destination != elevator_state.position) {
-				Floor *floor = &floors[elevator_state.destination];
+			if (elevator_state.counter > 0) elevator_state.counter--;
+			else {
+				for (int i = 0; i < 5; i++) {
+					if (elevator_state.destinations[i] == DESTINATION_VISIT) {
+						elevator_state.destination = i;
+						set_led(LOCK_THE_DOOR, ELEVATOR_ADDRESS);
 
-				set_led(LED_ON, floor->door_led_address);
-				set_led(LED_ON, floor->elevator_led_address);
-				set_led(LOCK_THE_DOOR, ELEVATOR_ADDRESS);
-
-				elevator_state.state = LOCKING;
-				elevator_state.counter = 500000;
+						elevator_state.state = LOCKING;
+						elevator_state.counter = 1000000;
+						elevator_state.destinations[i] = DESTINATION_IGNORE;
+						break;
+					}
+				}
 			}
 			break;
 		case LOCKING:
