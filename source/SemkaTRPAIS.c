@@ -80,6 +80,11 @@
 #define FLOOR_3_SWITCH 0xe3
 #define FLOOR_4_SWITCH 0xe4
 
+#define DISPLAY_ADDRESS 0x30
+#define DISPLAY_DIRECTION_UP 0x01
+#define DISPLAY_DIRECTION_DOWN 0x02
+#define DISPLAY_DIRECTION_NONE 0x03
+
 volatile uint8_t Sprava[10], Index = 0;
 volatile uint8_t Sprava_Complete = 0;
 uint8_t stav_citania = 0;
@@ -99,6 +104,12 @@ typedef enum {
 } ElevatorDelayState;
 
 typedef enum {
+	UP,
+	DOWN,
+	NONE
+} ElevatorDirection;
+
+typedef enum {
 	DESTINATION_VISIT,
 	DESTINATION_IGNORE
 } DestinationState;
@@ -108,6 +119,7 @@ typedef struct elevator_state {
 	uint8_t destination;
 	DestinationState destinations[5];
 	uint32_t counter;
+	ElevatorDirection direction;
 	ElevatorDelayState state;
 } ElevatorState;
 
@@ -119,6 +131,11 @@ typedef struct floor {
 	uint8_t elevator_button_addrees;
 	uint8_t switch_address;
 } Floor;
+
+typedef struct display {
+	uint8_t floor;
+	ElevatorDirection direction;
+} Display;
 
 Floor floors[] = {
 	{
@@ -203,6 +220,7 @@ void engine_speed() {
 			vysledokcrc };
 	LPSCI_WriteBlocking(UART0, packet, sizeof(packet));
 }
+
 void ack(uint8_t Adresa_prijimatela) {
 	uint8_t vypocetcrc[] = { Adresa_prijimatela, MY_ADDRESS };
 	uint8_t vysledokcrc = gencrc(vypocetcrc, sizeof(vypocetcrc));
@@ -216,6 +234,13 @@ void door(uint8_t unlock_open_door) {
 	uint8_t vysledokcrc = gencrc(vypocetcrc, sizeof(vypocetcrc));
 	uint8_t packet[] = { START_BYTE, ELEVATOR_ADDRESS, MY_ADDRESS, 0x01,
 			unlock_open_door, vysledokcrc };
+	LPSCI_WriteBlocking(UART0, packet, sizeof(packet));
+}
+
+void display(uint8_t direction, uint8_t floor) {
+	uint8_t vypocetcrc[] = { DISPLAY_ADDRESS, MY_ADDRESS, direction, floor };
+	uint8_t vysledokcrc = gencrc(vypocetcrc, sizeof(vypocetcrc));
+	uint8_t packet[] = { START_BYTE, DISPLAY_ADDRESS, MY_ADDRESS, 0x02, direction, floor, vysledokcrc };
 	LPSCI_WriteBlocking(UART0, packet, sizeof(packet));
 }
 
@@ -320,8 +345,16 @@ int main(void) {
 		},
 		.position = FLOOR_3,
 		.counter = 0,
+		.direction = DOWN,
 		.state = MOVING
 	};
+
+	Display display_state = {
+		.floor = FLOOR_P,
+		.direction = DOWN
+	};
+
+	ElevatorDirection engine_direction = NONE;
 
 	while (1) {
 		if (process_message == 1) {
@@ -362,9 +395,9 @@ int main(void) {
 				set_led(LED_OFF, floor->door_led_address);
 				set_led(LED_OFF, floor->elevator_led_address);
 
-				engine(ENGINE_STOP);
 				elevator_state.state = STOPPING;
 				elevator_state.counter = 1000000;
+				elevator_state.direction = NONE;
 			}
 			break;
 		case STOPPING:
@@ -402,14 +435,55 @@ int main(void) {
 			if (elevator_state.counter > 0) elevator_state.counter--;
 			else {
 				if (elevator_state.destination < elevator_state.position) {
-					engine(ENGINE_DOWN);
+					elevator_state.direction = DOWN;
 				} else {
-					engine(ENGINE_UP);
+					elevator_state.direction = UP;
 				}
 				elevator_state.state = MOVING;
 			}
 			break;
 		default: break;
+		}
+
+		if (elevator_state.direction != display_state.direction || elevator_state.position != display_state.floor) {
+			display_state.direction = elevator_state.direction;
+			display_state.floor = elevator_state.position;
+
+			char display_message;
+
+			if (display_state.floor == FLOOR_P) {
+				display_message = 'P';
+			} else {
+				display_message = display_state.floor + '0';
+			}
+
+			switch (display_state.direction) {
+			case UP:
+				display(DISPLAY_DIRECTION_UP, display_message);
+				break;
+			case DOWN:
+				display(DISPLAY_DIRECTION_DOWN, display_message);
+				break;
+			case NONE:
+				display(DISPLAY_DIRECTION_NONE, display_message);
+				break;
+			}
+		}
+
+		if (engine_direction != elevator_state.direction) {
+			engine_direction = elevator_state.direction;
+
+			switch(engine_direction) {
+			case UP:
+				engine(ENGINE_UP);
+				break;
+			case DOWN:
+				engine(ENGINE_DOWN);
+				break;
+			case NONE:
+				engine(ENGINE_STOP);
+				break;
+			}
 		}
 	}
 
