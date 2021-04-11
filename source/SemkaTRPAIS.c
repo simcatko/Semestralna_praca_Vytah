@@ -85,6 +85,8 @@
 #define DISPLAY_DIRECTION_DOWN 0x02
 #define DISPLAY_DIRECTION_NONE 0x03
 
+#define DELAY 50000;
+
 volatile uint8_t Sprava[10], Index = 0;
 volatile uint8_t Sprava_Complete = 0;
 uint8_t stav_citania = 0;
@@ -309,13 +311,10 @@ void Handle_switch(ElevatorState *elevator_state, Floor *floor) {
 }
 
 void Handle_button(ElevatorState *elevator_state, Floor *floor) {
-	set_led(LED_ON, floor->door_led_address);
-	set_led(LED_ON, floor->elevator_led_address);
 	elevator_state->destinations[floor->number] = DESTINATION_VISIT;
 }
 
 int main(void) {
-
 	BOARD_InitBootPins();
 	BOARD_InitBootClocks();
 	BOARD_InitBootPeripherals();
@@ -356,6 +355,16 @@ int main(void) {
 
 	ElevatorDirection engine_direction = NONE;
 
+	DestinationState leds_state[5] = {
+		DESTINATION_VISIT,
+		DESTINATION_IGNORE,
+		DESTINATION_IGNORE,
+		DESTINATION_IGNORE,
+		DESTINATION_IGNORE
+	};
+
+	int doors_locked = 0;
+
 	while (1) {
 		if (process_message == 1) {
 			process_message = 0;
@@ -384,35 +393,30 @@ int main(void) {
 		case MOVING:
 			if (elevator_state.position == elevator_state.destination) {
 				elevator_state.state = ARRIWING;
-				elevator_state.counter = 300000;
+				elevator_state.counter = DELAY;
 			}
 			break;
 		case ARRIWING:
 			if (elevator_state.counter > 0) elevator_state.counter--;
 			else {
-				Floor *floor = &floors[elevator_state.destination];
-
-				set_led(LED_OFF, floor->door_led_address);
-				set_led(LED_OFF, floor->elevator_led_address);
-
+				elevator_state.destinations[elevator_state.destination] = DESTINATION_IGNORE;
 				elevator_state.state = STOPPING;
-				elevator_state.counter = 1000000;
 				elevator_state.direction = NONE;
+				elevator_state.counter = DELAY;
 			}
 			break;
 		case STOPPING:
 			if (elevator_state.counter > 0) elevator_state.counter--;
 			else {
-				set_led(UNLOCK_THE_DOOR, ELEVATOR_ADDRESS);
 				elevator_state.state = UNLOCKING;
-				elevator_state.counter = 1000000;
+				elevator_state.counter = DELAY;
 			}
 			break;
 		case UNLOCKING:
 			if (elevator_state.counter > 0) elevator_state.counter--;
 			else {
 				elevator_state.state = WAITING;
-				elevator_state.counter = 1000000;
+				elevator_state.counter = 12 * DELAY;
 			}
 			break;
 		case WAITING:
@@ -421,11 +425,8 @@ int main(void) {
 				for (int i = 0; i < 5; i++) {
 					if (elevator_state.destinations[i] == DESTINATION_VISIT) {
 						elevator_state.destination = i;
-						set_led(LOCK_THE_DOOR, ELEVATOR_ADDRESS);
-
 						elevator_state.state = LOCKING;
-						elevator_state.counter = 1000000;
-						elevator_state.destinations[i] = DESTINATION_IGNORE;
+						elevator_state.counter = DELAY;
 						break;
 					}
 				}
@@ -484,6 +485,32 @@ int main(void) {
 				engine(ENGINE_STOP);
 				break;
 			}
+		}
+
+		for (int li = 0; li < 5; li++) {
+			if (leds_state[li] != elevator_state.destinations[li]) {
+				leds_state[li] = elevator_state.destinations[li];
+				Floor *floor = &floors[li];
+
+				switch (leds_state[li]) {
+				case DESTINATION_IGNORE:
+					set_led(LED_OFF, floor->door_led_address);
+					set_led(LED_OFF, floor->elevator_led_address);
+					break;
+				case DESTINATION_VISIT:
+					set_led(LED_ON, floor->door_led_address);
+					set_led(LED_ON, floor->elevator_led_address);
+					break;
+				}
+			}
+		}
+
+		if (elevator_state.state == LOCKING && !doors_locked) {
+			doors_locked = 1;
+			set_led(LOCK_THE_DOOR, ELEVATOR_ADDRESS);
+		} else if (elevator_state.state == UNLOCKING && doors_locked) {
+			doors_locked = 0;
+			set_led(UNLOCK_THE_DOOR, ELEVATOR_ADDRESS);
 		}
 	}
 
