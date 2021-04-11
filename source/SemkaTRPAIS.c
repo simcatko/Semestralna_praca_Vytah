@@ -41,12 +41,12 @@
 #define BUTTON_IN_ELEVATOR_3 0xb3
 #define BUTTON_IN_ELEVATOR_4 0xb4
 
-#define DESTINATION_FLOOR_NONE 10
-#define DESTINATION_FLOOR_P 0
-#define DESTINATION_FLOOR_1 1
-#define DESTINATION_FLOOR_2 2
-#define DESTINATION_FLOOR_3 3
-#define DESTINATION_FLOOR_4 4
+#define FLOOR_NONE 10
+#define FLOOR_P 0
+#define FLOOR_1 1
+#define FLOOR_2 2
+#define FLOOR_3 3
+#define FLOOR_4 4
 
 #define HORNY_NARAZNIK 0xe5
 #define DOLNY_NARAZNIK 0xdf
@@ -88,6 +88,63 @@ uint8_t zostavajucedata;
 uint8_t data[256];
 uint8_t data_index = 0;
 uint8_t process_message = 0;
+
+typedef struct elevator_state {
+	uint8_t position;
+	uint8_t destination;
+} ElevatorState;
+
+typedef struct floor {
+	uint8_t number;
+	uint8_t door_led_address;
+	uint8_t door_button_address;
+	uint8_t elevator_led_address;
+	uint8_t elevator_button_addrees;
+	uint8_t switch_address;
+} Floor;
+
+Floor floors[] = {
+	{
+		.number = 0,
+		.door_led_address = LED1_ADDRESS,
+		.door_button_address = BUTTON_P,
+		.elevator_led_address = LED_IN_ELEVATOR_P_ADDRESS,
+		.elevator_button_addrees = BUTTON_IN_ELEVATOR_P,
+		.switch_address = FLOOR_P_SWITCH
+	},
+	{
+		.number = 1,
+		.door_led_address = LED2_ADDRESS,
+		.door_button_address = BUTTON_1,
+		.elevator_led_address = LED_IN_ELEVATOR_1_ADDRESS,
+		.elevator_button_addrees = BUTTON_IN_ELEVATOR_1,
+		.switch_address = FLOOR_1_SWITCH
+	},
+	{
+		.number = 2,
+		.door_led_address = LED3_ADDRESS,
+		.door_button_address = BUTTON_2,
+		.elevator_led_address = LED_IN_ELEVATOR_2_ADDRESS,
+		.elevator_button_addrees = BUTTON_IN_ELEVATOR_2,
+		.switch_address = FLOOR_2_SWITCH
+	},
+	{
+		.number = 3,
+		.door_led_address = LED4_ADDRESS,
+		.door_button_address = BUTTON_3,
+		.elevator_led_address = LED_IN_ELEVATOR_3_ADDRESS,
+		.elevator_button_addrees = BUTTON_IN_ELEVATOR_3,
+		.switch_address = FLOOR_3_SWITCH
+	},
+	{
+		.number = 4,
+		.door_led_address = LED5_ADDRESS,
+		.door_button_address = BUTTON_4,
+		.elevator_led_address = LED_IN_ELEVATOR_4_ADDRESS,
+		.elevator_button_addrees = BUTTON_IN_ELEVATOR_4,
+		.switch_address = FLOOR_4_SWITCH
+	}
+};
 
 uint8_t gencrc(uint8_t *data, size_t len) {
 	uint8_t crc = 0;
@@ -211,36 +268,35 @@ void UART0_IRQHandler(void) {
 	}
 }
 
-uint8_t Handle_switch(uint8_t destination, uint8_t my_floor,
-		uint8_t led_address, uint8_t led_in_elevator_address) {
-	if (destination > my_floor)
+void Handle_switch(ElevatorState *elevator_state, Floor *floor) {
+	if (elevator_state->destination > floor->number)
 		engine(ENGINE_UP);
-	else if (destination < my_floor)
+	else if (elevator_state->destination < floor->number)
 		engine(ENGINE_DOWN);
 	else {
 		delay(1000);
 		engine(ENGINE_STOP);
 		delay(2000);
 		set_led(UNLOCK_THE_DOOR, ELEVATOR_ADDRESS);
-		set_led(LED_OFF, led_address);
-		set_led(LED_OFF, led_in_elevator_address);
+		set_led(LED_OFF, floor->door_led_address);
+		set_led(LED_OFF, floor->elevator_led_address);
 	}
-	return my_floor;
+	elevator_state->position = floor->number;
 }
 
-uint8_t Handle_button(uint8_t position, uint8_t my_floor, uint8_t led_address, uint8_t led_in_elevator_address) {
-	if (position > my_floor) {
+void Handle_button(ElevatorState *elevator_state, Floor *floor) {
+	if (elevator_state->position > floor->number) {
 		engine(ENGINE_DOWN);
 		set_led(LOCK_THE_DOOR, ELEVATOR_ADDRESS);
-		set_led(LED_ON, led_address);
-		set_led(LED_ON, led_in_elevator_address);
-	} else if (position < my_floor) {
+		set_led(LED_ON, floor->door_led_address);
+		set_led(LED_ON, floor->elevator_led_address);
+	} else if (elevator_state->position < floor->number) {
 		engine(ENGINE_UP);
 		set_led(LOCK_THE_DOOR, ELEVATOR_ADDRESS);
-		set_led(LED_ON, led_address);
-		set_led(LED_ON, led_in_elevator_address);
+		set_led(LED_ON, floor->door_led_address);
+		set_led(LED_ON, floor->elevator_led_address);
 	}
-	return my_floor;
+	elevator_state->destination = floor->number;
 }
 
 int main(void) {
@@ -263,78 +319,32 @@ int main(void) {
 
 	engine(ENGINE_DOWN);
 
-	uint8_t destination = DESTINATION_FLOOR_P;
-	uint8_t position = DESTINATION_FLOOR_P;
+	ElevatorState elevator_state = {
+		.destination = FLOOR_P,
+		.position = FLOOR_P
+	};
 
 	while (1) {
 		if (process_message == 1) {
 			process_message = 0;
 			ack(message[MESSAGE_SENDER_ADDRESS]);
 			switch (message[MESSAGE_SENDER_ADDRESS]) {
-			case BUTTON_P:
-				destination = Handle_button(position, DESTINATION_FLOOR_P,
-						LED1_ADDRESS, LED_IN_ELEVATOR_P_ADDRESS);
-				break;
-			case BUTTON_1:
-				destination = Handle_button(position, DESTINATION_FLOOR_1,
-						LED2_ADDRESS, LED_IN_ELEVATOR_1_ADDRESS);
-				break;
-			case BUTTON_2:
-				destination = Handle_button(position, DESTINATION_FLOOR_2,
-						LED3_ADDRESS, LED_IN_ELEVATOR_2_ADDRESS);
-				break;
-			case BUTTON_3:
-				destination = Handle_button(position, DESTINATION_FLOOR_3,
-						LED4_ADDRESS, LED_IN_ELEVATOR_3_ADDRESS);
-				break;
-			case BUTTON_4:
-				destination = Handle_button(position, DESTINATION_FLOOR_4,
-						LED5_ADDRESS, LED_IN_ELEVATOR_4_ADDRESS);
-				break;
-			case BUTTON_IN_ELEVATOR_P:
-				destination = Handle_button(position, DESTINATION_FLOOR_P,
-						LED1_ADDRESS, LED_IN_ELEVATOR_P_ADDRESS);
-				break;
-			case BUTTON_IN_ELEVATOR_1:
-				destination = Handle_button(position, DESTINATION_FLOOR_1,
-						LED2_ADDRESS, LED_IN_ELEVATOR_1_ADDRESS);
-				break;
-			case BUTTON_IN_ELEVATOR_2:
-				destination = Handle_button(position, DESTINATION_FLOOR_2,
-						LED3_ADDRESS, LED_IN_ELEVATOR_2_ADDRESS);
-				break;
-			case BUTTON_IN_ELEVATOR_3:
-				destination = Handle_button(position, DESTINATION_FLOOR_3,
-						LED4_ADDRESS, LED_IN_ELEVATOR_3_ADDRESS);
-				break;
-			case BUTTON_IN_ELEVATOR_4:
-				destination = Handle_button(position, DESTINATION_FLOOR_4,
-						LED5_ADDRESS, LED_IN_ELEVATOR_4_ADDRESS);
-				break;
-			case FLOOR_P_SWITCH:
-				position = Handle_switch(destination, DESTINATION_FLOOR_P,
-						LED1_ADDRESS, LED_IN_ELEVATOR_P_ADDRESS);
-				break;
-			case FLOOR_1_SWITCH:
-				position = Handle_switch(destination, DESTINATION_FLOOR_1,
-						LED2_ADDRESS, LED_IN_ELEVATOR_1_ADDRESS);
-				break;
-			case FLOOR_2_SWITCH:
-				position = Handle_switch(destination, DESTINATION_FLOOR_2,
-						LED3_ADDRESS, LED_IN_ELEVATOR_2_ADDRESS);
-				break;
-			case FLOOR_3_SWITCH:
-				position = Handle_switch(destination, DESTINATION_FLOOR_3,
-						LED4_ADDRESS, LED_IN_ELEVATOR_3_ADDRESS);
-				break;
-
-			case FLOOR_4_SWITCH:
-				position = Handle_switch(destination, DESTINATION_FLOOR_4,
-						LED5_ADDRESS, LED_IN_ELEVATOR_4_ADDRESS);
-				break;
-
-			default:
-				break;
+			case BUTTON_P: Handle_button(&elevator_state, &floors[0]); break;
+			case BUTTON_1: Handle_button(&elevator_state, &floors[1]); break;
+			case BUTTON_2: Handle_button(&elevator_state, &floors[2]); break;
+			case BUTTON_3: Handle_button(&elevator_state, &floors[3]); break;
+			case BUTTON_4: Handle_button(&elevator_state, &floors[4]); break;
+			case BUTTON_IN_ELEVATOR_P: Handle_button(&elevator_state, &floors[0]); break;
+			case BUTTON_IN_ELEVATOR_1: Handle_button(&elevator_state, &floors[1]); break;
+			case BUTTON_IN_ELEVATOR_2: Handle_button(&elevator_state, &floors[2]); break;
+			case BUTTON_IN_ELEVATOR_3: Handle_button(&elevator_state, &floors[3]); break;
+			case BUTTON_IN_ELEVATOR_4: Handle_button(&elevator_state, &floors[4]); break;
+			case FLOOR_P_SWITCH: Handle_switch(&elevator_state, &floors[0]); break;
+			case FLOOR_1_SWITCH: Handle_switch(&elevator_state, &floors[1]); break;
+			case FLOOR_2_SWITCH: Handle_switch(&elevator_state, &floors[2]); break;
+			case FLOOR_3_SWITCH: Handle_switch(&elevator_state, &floors[3]); break;
+			case FLOOR_4_SWITCH: Handle_switch(&elevator_state, &floors[4]); break;
+			default: break;
 			}
 		}
 	}
