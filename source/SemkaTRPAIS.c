@@ -269,11 +269,7 @@ void UART0_IRQHandler(void) {
 }
 
 void Handle_switch(ElevatorState *elevator_state, Floor *floor) {
-	if (elevator_state->destination > floor->number)
-		engine(ENGINE_UP);
-	else if (elevator_state->destination < floor->number)
-		engine(ENGINE_DOWN);
-	else {
+	if (elevator_state->destination == floor->number) {
 		delay(1000);
 		engine(ENGINE_STOP);
 		delay(2000);
@@ -281,6 +277,7 @@ void Handle_switch(ElevatorState *elevator_state, Floor *floor) {
 		set_led(LED_OFF, floor->door_led_address);
 		set_led(LED_OFF, floor->elevator_led_address);
 	}
+
 	elevator_state->position = floor->number;
 }
 
