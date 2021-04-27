@@ -1,4 +1,4 @@
-#include "struktury.h"
+#include "definitions.h"
 
 Floor floors[] = {
 	{

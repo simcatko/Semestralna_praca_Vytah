@@ -1,6 +1,6 @@
+#include <definitions.h>
 #include <stdint.h>
 #include <fsl_lpsci.h>
-#include <struktury.h>
 
 #ifndef HANDLE_MESSAGE_H_
 #define HANDLE_MESSAGE_H_

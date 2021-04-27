@@ -1,5 +1,4 @@
 #include "handle_message.h"
-#include "struktury.h"
 
 void Handle_switch(ElevatorState *elevator_state, Floor *floor) {
 	elevator_state->position = floor->number;
