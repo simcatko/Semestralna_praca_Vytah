@@ -1,0 +1,88 @@
+\hypertarget{_semka_t_r_p_a_i_s_8c}{}\doxysection{source/\+Semka\+TRPAIS.c File Reference}
+\label{_semka_t_r_p_a_i_s_8c}\index{source/SemkaTRPAIS.c@{source/SemkaTRPAIS.c}}
+
+
+Hlavny subor @detail Obsahuje startovaciu funkciu programu a hlavny cyklus.  
+
+
+{\ttfamily \#include $<$comunication.\+h$>$}\newline
+{\ttfamily \#include $<$definitions.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}board.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}peripherals.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}pin\+\_\+mux.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}clock\+\_\+config.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}MKL25\+Z4.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}fsl\+\_\+debug\+\_\+console.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$fsl\+\_\+lpsci.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}handle\+\_\+message.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}handle\+\_\+display.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}handle\+\_\+door.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}handle\+\_\+engine.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}handle\+\_\+leds.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}handle\+\_\+state.\+h\char`\"{}}\newline
+Include dependency graph for Semka\+TRPAIS.\+c\+:
+% FIG 0
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_semka_t_r_p_a_i_s_8c_a602e8faba34170acdd09dae88e6cd80b}{handle\+\_\+message\+\_\+byte}} (uint8\+\_\+t byte)
+\item 
+void \mbox{\hyperlink{_semka_t_r_p_a_i_s_8c_a1c0544b06d54b198d8c50f507e399a91}{UART0\+\_\+\+IRQHandler}} (void)
+\item 
+int \mbox{\hyperlink{_semka_t_r_p_a_i_s_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_semka_t_r_p_a_i_s_8c_a6549b304bf9e5aa279ffe0bb92c7016b}\label{_semka_t_r_p_a_i_s_8c_a6549b304bf9e5aa279ffe0bb92c7016b}} 
+\mbox{\hyperlink{definitions_8h_a138fc8ead0a2640db83244700a62aabb}{Message\+Reading\+State}} {\bfseries stav\+\_\+citania} = \mbox{\hyperlink{definitions_8h_a138fc8ead0a2640db83244700a62aabbaaa6a81c45b15bb269b0716539d989f3a}{WAITING\+\_\+\+START\+\_\+\+BYTE}}
+\item 
+\mbox{\Hypertarget{_semka_t_r_p_a_i_s_8c_a6f9cfffbc7626888960fc2665ffb69f4}\label{_semka_t_r_p_a_i_s_8c_a6f9cfffbc7626888960fc2665ffb69f4}} 
+uint8\+\_\+t {\bfseries message} \mbox{[}262\mbox{]}
+\item 
+\mbox{\Hypertarget{_semka_t_r_p_a_i_s_8c_aa1a4619c437b0ce997733d736b28dae5}\label{_semka_t_r_p_a_i_s_8c_aa1a4619c437b0ce997733d736b28dae5}} 
+uint8\+\_\+t {\bfseries zostavajucedata}
+\item 
+\mbox{\Hypertarget{_semka_t_r_p_a_i_s_8c_a71ed92c04817c761b6de921899b330d6}\label{_semka_t_r_p_a_i_s_8c_a71ed92c04817c761b6de921899b330d6}} 
+uint8\+\_\+t {\bfseries data} \mbox{[}256\mbox{]}
+\item 
+\mbox{\Hypertarget{_semka_t_r_p_a_i_s_8c_a847e6e7abcd92c5e0a4be683cf21d85f}\label{_semka_t_r_p_a_i_s_8c_a847e6e7abcd92c5e0a4be683cf21d85f}} 
+uint8\+\_\+t {\bfseries data\+\_\+index} = 0
+\item 
+\mbox{\Hypertarget{_semka_t_r_p_a_i_s_8c_a767a9d2c787e998be6885aa6ab775298}\label{_semka_t_r_p_a_i_s_8c_a767a9d2c787e998be6885aa6ab775298}} 
+uint8\+\_\+t {\bfseries process\+\_\+message} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Hlavny subor @detail Obsahuje startovaciu funkciu programu a hlavny cyklus. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_semka_t_r_p_a_i_s_8c_a602e8faba34170acdd09dae88e6cd80b}\label{_semka_t_r_p_a_i_s_8c_a602e8faba34170acdd09dae88e6cd80b}} 
+\index{SemkaTRPAIS.c@{SemkaTRPAIS.c}!handle\_message\_byte@{handle\_message\_byte}}
+\index{handle\_message\_byte@{handle\_message\_byte}!SemkaTRPAIS.c@{SemkaTRPAIS.c}}
+\doxysubsubsection{\texorpdfstring{handle\_message\_byte()}{handle\_message\_byte()}}
+{\footnotesize\ttfamily void handle\+\_\+message\+\_\+byte (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{byte }\end{DoxyParamCaption})}
+
+Funkcia slúži na spracovavanie sprav vytahu Spracováva správu po bajtoch Globálne si drží stav spracovavania v globalnej premennej stav\+\_\+citania Ak sa podari nacitat celu spravu, nastavi proces\+\_\+message na 1 \mbox{\Hypertarget{_semka_t_r_p_a_i_s_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{_semka_t_r_p_a_i_s_8c_a840291bc02cba5474a4cb46a9b9566fe}} 
+\index{SemkaTRPAIS.c@{SemkaTRPAIS.c}!main@{main}}
+\index{main@{main}!SemkaTRPAIS.c@{SemkaTRPAIS.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Hlavny cyklus dookola opakuje 3 kroky\+:
+\begin{DoxyEnumerate}
+\item Spracuje spravy od vytahu
+\item Upravi svoj lokalny stav
+\item Posle spravy vytahu
+\end{DoxyEnumerate}\mbox{\Hypertarget{_semka_t_r_p_a_i_s_8c_a1c0544b06d54b198d8c50f507e399a91}\label{_semka_t_r_p_a_i_s_8c_a1c0544b06d54b198d8c50f507e399a91}} 
+\index{SemkaTRPAIS.c@{SemkaTRPAIS.c}!UART0\_IRQHandler@{UART0\_IRQHandler}}
+\index{UART0\_IRQHandler@{UART0\_IRQHandler}!SemkaTRPAIS.c@{SemkaTRPAIS.c}}
+\doxysubsubsection{\texorpdfstring{UART0\_IRQHandler()}{UART0\_IRQHandler()}}
+{\footnotesize\ttfamily void UART0\+\_\+\+IRQHandler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Funkcia slúži na prijímanie správ od výťahu, je volaná vždy keď prídu údaje z výťahu. Správa je spracovaná po bajtoch. 

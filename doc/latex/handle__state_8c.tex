@@ -1,0 +1,79 @@
+\hypertarget{handle__state_8c}{}\doxysection{source/handle\+\_\+state.c File Reference}
+\label{handle__state_8c}\index{source/handle\_state.c@{source/handle\_state.c}}
+
+
+Subor obsahuje funkcie na pracu so stavom vytahu.  
+
+
+{\ttfamily \#include \char`\"{}handle\+\_\+state.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}definitions.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{handle__state_8c_a46003da0801e27d98bae80b2b9b12d9e}{handle\+\_\+state\+\_\+moving}} (\mbox{\hyperlink{definitions_8h_adafb5064646fb2f2832fa9c5f9544757}{Elevator\+State}} $\ast$\mbox{\hyperlink{structelevator__state}{elevator\+\_\+state}})
+\item 
+void \mbox{\hyperlink{handle__state_8c_a0b959c023d0cbf80979f4bc71f96929d}{handle\+\_\+state\+\_\+arriwing}} (\mbox{\hyperlink{definitions_8h_adafb5064646fb2f2832fa9c5f9544757}{Elevator\+State}} $\ast$\mbox{\hyperlink{structelevator__state}{elevator\+\_\+state}})
+\item 
+void \mbox{\hyperlink{handle__state_8c_a4b2dd5aa274f8c589a2b736a56e066fe}{handle\+\_\+state\+\_\+stopping}} (\mbox{\hyperlink{definitions_8h_adafb5064646fb2f2832fa9c5f9544757}{Elevator\+State}} $\ast$\mbox{\hyperlink{structelevator__state}{elevator\+\_\+state}})
+\item 
+void \mbox{\hyperlink{handle__state_8c_a16c8dff3b8baa0c556f9599c04d9aa03}{handle\+\_\+state\+\_\+unlocking}} (\mbox{\hyperlink{definitions_8h_adafb5064646fb2f2832fa9c5f9544757}{Elevator\+State}} $\ast$\mbox{\hyperlink{structelevator__state}{elevator\+\_\+state}})
+\item 
+void \mbox{\hyperlink{handle__state_8c_a5cf02b206f3b4571dbf00cb86d24cb84}{handle\+\_\+state\+\_\+waiting}} (\mbox{\hyperlink{definitions_8h_adafb5064646fb2f2832fa9c5f9544757}{Elevator\+State}} $\ast$\mbox{\hyperlink{structelevator__state}{elevator\+\_\+state}})
+\item 
+void \mbox{\hyperlink{handle__state_8c_ac2ca00200aa5216f30f27013e29648bc}{handle\+\_\+state\+\_\+locking}} (\mbox{\hyperlink{definitions_8h_adafb5064646fb2f2832fa9c5f9544757}{Elevator\+State}} $\ast$\mbox{\hyperlink{structelevator__state}{elevator\+\_\+state}})
+\item 
+void \mbox{\hyperlink{handle__state_8c_a47adee7a5347e4cd7c22e09d3d426c38}{handle\+\_\+state}} (\mbox{\hyperlink{definitions_8h_adafb5064646fb2f2832fa9c5f9544757}{Elevator\+State}} $\ast$\mbox{\hyperlink{structelevator__state}{elevator\+\_\+state}})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Subor obsahuje funkcie na pracu so stavom vytahu. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{handle__state_8c_a47adee7a5347e4cd7c22e09d3d426c38}\label{handle__state_8c_a47adee7a5347e4cd7c22e09d3d426c38}} 
+\index{handle\_state.c@{handle\_state.c}!handle\_state@{handle\_state}}
+\index{handle\_state@{handle\_state}!handle\_state.c@{handle\_state.c}}
+\doxysubsubsection{\texorpdfstring{handle\_state()}{handle\_state()}}
+{\footnotesize\ttfamily void handle\+\_\+state (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{definitions_8h_adafb5064646fb2f2832fa9c5f9544757}{Elevator\+State}} $\ast$}]{elevator\+\_\+state }\end{DoxyParamCaption})}
+
+Stavova masina Funkcia, ktora upravuje lokalny stav vytahu.
+
+ \mbox{\Hypertarget{handle__state_8c_a0b959c023d0cbf80979f4bc71f96929d}\label{handle__state_8c_a0b959c023d0cbf80979f4bc71f96929d}} 
+\index{handle\_state.c@{handle\_state.c}!handle\_state\_arriwing@{handle\_state\_arriwing}}
+\index{handle\_state\_arriwing@{handle\_state\_arriwing}!handle\_state.c@{handle\_state.c}}
+\doxysubsubsection{\texorpdfstring{handle\_state\_arriwing()}{handle\_state\_arriwing()}}
+{\footnotesize\ttfamily void handle\+\_\+state\+\_\+arriwing (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{definitions_8h_adafb5064646fb2f2832fa9c5f9544757}{Elevator\+State}} $\ast$}]{elevator\+\_\+state }\end{DoxyParamCaption})}
+
+Funkcia je zavolana, ked sa vytah priblizil cielovemu poschodiu Odpocitava delay aby vytah nezastal priskoro a nasledne oznaci poschodie za navstivene nastavi stav na STOPPING \mbox{\Hypertarget{handle__state_8c_ac2ca00200aa5216f30f27013e29648bc}\label{handle__state_8c_ac2ca00200aa5216f30f27013e29648bc}} 
+\index{handle\_state.c@{handle\_state.c}!handle\_state\_locking@{handle\_state\_locking}}
+\index{handle\_state\_locking@{handle\_state\_locking}!handle\_state.c@{handle\_state.c}}
+\doxysubsubsection{\texorpdfstring{handle\_state\_locking()}{handle\_state\_locking()}}
+{\footnotesize\ttfamily void handle\+\_\+state\+\_\+locking (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{definitions_8h_adafb5064646fb2f2832fa9c5f9544757}{Elevator\+State}} $\ast$}]{elevator\+\_\+state }\end{DoxyParamCaption})}
+
+Funckia je volana ked sa na vytahu zatvaraju dvere najskor odpocitava cas po ktorom by mali byt dvere zatvorene nasledne nastavy smer ktorym sa bude pohybovat vytah prechadza do stavu MOVING \mbox{\Hypertarget{handle__state_8c_a46003da0801e27d98bae80b2b9b12d9e}\label{handle__state_8c_a46003da0801e27d98bae80b2b9b12d9e}} 
+\index{handle\_state.c@{handle\_state.c}!handle\_state\_moving@{handle\_state\_moving}}
+\index{handle\_state\_moving@{handle\_state\_moving}!handle\_state.c@{handle\_state.c}}
+\doxysubsubsection{\texorpdfstring{handle\_state\_moving()}{handle\_state\_moving()}}
+{\footnotesize\ttfamily void handle\+\_\+state\+\_\+moving (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{definitions_8h_adafb5064646fb2f2832fa9c5f9544757}{Elevator\+State}} $\ast$}]{elevator\+\_\+state }\end{DoxyParamCaption})}
+
+Tato funkcia sa vola ked je vytah prave v pohybe. Kontroluje ci sa uz vytah nachadza na cielovom poschodi ak ano tak zmeni stav na ARRIWING V pripade ak este nieje na cielovom poschodi kontroluje ci medzi tym nebol privolany na blizsie poschodie v aktualnom smere pohybu \mbox{\Hypertarget{handle__state_8c_a4b2dd5aa274f8c589a2b736a56e066fe}\label{handle__state_8c_a4b2dd5aa274f8c589a2b736a56e066fe}} 
+\index{handle\_state.c@{handle\_state.c}!handle\_state\_stopping@{handle\_state\_stopping}}
+\index{handle\_state\_stopping@{handle\_state\_stopping}!handle\_state.c@{handle\_state.c}}
+\doxysubsubsection{\texorpdfstring{handle\_state\_stopping()}{handle\_state\_stopping()}}
+{\footnotesize\ttfamily void handle\+\_\+state\+\_\+stopping (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{definitions_8h_adafb5064646fb2f2832fa9c5f9544757}{Elevator\+State}} $\ast$}]{elevator\+\_\+state }\end{DoxyParamCaption})}
+
+Funkcia je volana ked vytah zastavuje najskor odpocitava delay po ktorom by vytah uz mal stat nasledne prechadza do stavu UNLOCKING \mbox{\Hypertarget{handle__state_8c_a16c8dff3b8baa0c556f9599c04d9aa03}\label{handle__state_8c_a16c8dff3b8baa0c556f9599c04d9aa03}} 
+\index{handle\_state.c@{handle\_state.c}!handle\_state\_unlocking@{handle\_state\_unlocking}}
+\index{handle\_state\_unlocking@{handle\_state\_unlocking}!handle\_state.c@{handle\_state.c}}
+\doxysubsubsection{\texorpdfstring{handle\_state\_unlocking()}{handle\_state\_unlocking()}}
+{\footnotesize\ttfamily void handle\+\_\+state\+\_\+unlocking (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{definitions_8h_adafb5064646fb2f2832fa9c5f9544757}{Elevator\+State}} $\ast$}]{elevator\+\_\+state }\end{DoxyParamCaption})}
+
+Funkcia je volana ked sa na vytahu otvaraju dvere najskor odpocitava delay po ktorom by mali byt dvere otvorene prechadza do stavu WAITING \mbox{\Hypertarget{handle__state_8c_a5cf02b206f3b4571dbf00cb86d24cb84}\label{handle__state_8c_a5cf02b206f3b4571dbf00cb86d24cb84}} 
+\index{handle\_state.c@{handle\_state.c}!handle\_state\_waiting@{handle\_state\_waiting}}
+\index{handle\_state\_waiting@{handle\_state\_waiting}!handle\_state.c@{handle\_state.c}}
+\doxysubsubsection{\texorpdfstring{handle\_state\_waiting()}{handle\_state\_waiting()}}
+{\footnotesize\ttfamily void handle\+\_\+state\+\_\+waiting (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{definitions_8h_adafb5064646fb2f2832fa9c5f9544757}{Elevator\+State}} $\ast$}]{elevator\+\_\+state }\end{DoxyParamCaption})}
+
+funkcia je volana ked vytah stoji na poschodi a ma otvorene dvere najskor sa odpocitava delay aby stihli ludia vystupit nastupit nasledne kontorluje ci nebol privolany na nejake poschodie pripadne na viacero poschodi ak bol privolany na viacero poschodi tak zvoli poschodie ktore je najblizsie k jeho aktualnej pozicii ak sa najde taketo poschodie prechadza do stavu LOCKING 

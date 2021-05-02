@@ -1,0 +1,44 @@
+\hypertarget{handle__message_8c}{}\doxysection{source/handle\+\_\+message.c File Reference}
+\label{handle__message_8c}\index{source/handle\_message.c@{source/handle\_message.c}}
+
+
+Obsahuje funkcie na spracovanie sprav.  
+
+
+{\ttfamily \#include \char`\"{}handle\+\_\+message.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{handle__message_8c_a75771085aaefbe28ac08ea3ab08e471f}{Handle\+\_\+switch}} (\mbox{\hyperlink{definitions_8h_adafb5064646fb2f2832fa9c5f9544757}{Elevator\+State}} $\ast$\mbox{\hyperlink{structelevator__state}{elevator\+\_\+state}}, \mbox{\hyperlink{definitions_8h_a2c3f0b95f940f8a2a0e3614bc6c4653c}{Floor}} $\ast$\mbox{\hyperlink{structfloor}{floor}})
+\item 
+void \mbox{\hyperlink{handle__message_8c_ae33d7ccc8973d4983f3af61405ba33f1}{Handle\+\_\+button}} (\mbox{\hyperlink{definitions_8h_adafb5064646fb2f2832fa9c5f9544757}{Elevator\+State}} $\ast$\mbox{\hyperlink{structelevator__state}{elevator\+\_\+state}}, \mbox{\hyperlink{definitions_8h_a2c3f0b95f940f8a2a0e3614bc6c4653c}{Floor}} $\ast$\mbox{\hyperlink{structfloor}{floor}})
+\item 
+void \mbox{\hyperlink{handle__message_8c_a2e7fed8d828759e37d785d8c56538c65}{handle\+\_\+message}} (uint8\+\_\+t message\mbox{[}262\mbox{]}, \mbox{\hyperlink{definitions_8h_adafb5064646fb2f2832fa9c5f9544757}{Elevator\+State}} $\ast$\mbox{\hyperlink{structelevator__state}{elevator\+\_\+state}})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Obsahuje funkcie na spracovanie sprav. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{handle__message_8c_ae33d7ccc8973d4983f3af61405ba33f1}\label{handle__message_8c_ae33d7ccc8973d4983f3af61405ba33f1}} 
+\index{handle\_message.c@{handle\_message.c}!Handle\_button@{Handle\_button}}
+\index{Handle\_button@{Handle\_button}!handle\_message.c@{handle\_message.c}}
+\doxysubsubsection{\texorpdfstring{Handle\_button()}{Handle\_button()}}
+{\footnotesize\ttfamily void Handle\+\_\+button (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{definitions_8h_adafb5064646fb2f2832fa9c5f9544757}{Elevator\+State}} $\ast$}]{elevator\+\_\+state,  }\item[{\mbox{\hyperlink{definitions_8h_a2c3f0b95f940f8a2a0e3614bc6c4653c}{Floor}} $\ast$}]{floor }\end{DoxyParamCaption})}
+
+Funkcia oznaci poschodie aby sa navstivilo \mbox{\Hypertarget{handle__message_8c_a2e7fed8d828759e37d785d8c56538c65}\label{handle__message_8c_a2e7fed8d828759e37d785d8c56538c65}} 
+\index{handle\_message.c@{handle\_message.c}!handle\_message@{handle\_message}}
+\index{handle\_message@{handle\_message}!handle\_message.c@{handle\_message.c}}
+\doxysubsubsection{\texorpdfstring{handle\_message()}{handle\_message()}}
+{\footnotesize\ttfamily void handle\+\_\+message (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{message\mbox{[}262\mbox{]},  }\item[{\mbox{\hyperlink{definitions_8h_adafb5064646fb2f2832fa9c5f9544757}{Elevator\+State}} $\ast$}]{elevator\+\_\+state }\end{DoxyParamCaption})}
+
+Funkcia spracovava spravy od tlacidiel a prepinacov \mbox{\Hypertarget{handle__message_8c_a75771085aaefbe28ac08ea3ab08e471f}\label{handle__message_8c_a75771085aaefbe28ac08ea3ab08e471f}} 
+\index{handle\_message.c@{handle\_message.c}!Handle\_switch@{Handle\_switch}}
+\index{Handle\_switch@{Handle\_switch}!handle\_message.c@{handle\_message.c}}
+\doxysubsubsection{\texorpdfstring{Handle\_switch()}{Handle\_switch()}}
+{\footnotesize\ttfamily void Handle\+\_\+switch (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{definitions_8h_adafb5064646fb2f2832fa9c5f9544757}{Elevator\+State}} $\ast$}]{elevator\+\_\+state,  }\item[{\mbox{\hyperlink{definitions_8h_a2c3f0b95f940f8a2a0e3614bc6c4653c}{Floor}} $\ast$}]{floor }\end{DoxyParamCaption})}
+
+Funkcia nastavi poziciu vytahu 

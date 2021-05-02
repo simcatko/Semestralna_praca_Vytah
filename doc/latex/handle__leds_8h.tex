@@ -1,0 +1,30 @@
+\hypertarget{handle__leds_8h}{}\doxysection{source/handle\+\_\+leds.h File Reference}
+\label{handle__leds_8h}\index{source/handle\_leds.h@{source/handle\_leds.h}}
+
+
+Kniznica.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$fsl\+\_\+lpsci.\+h$>$}\newline
+{\ttfamily \#include $<$definitions.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{handle__leds_8h_a517e5255faf04fc1fbba6727be0ca0df}{handle\+\_\+leds}} (\mbox{\hyperlink{definitions_8h_ac6912460c5b2758b93e165e45473c433}{Destination\+State}} leds\+\_\+state\mbox{[}5\mbox{]}, \mbox{\hyperlink{definitions_8h_adafb5064646fb2f2832fa9c5f9544757}{Elevator\+State}} $\ast$\mbox{\hyperlink{structelevator__state}{elevator\+\_\+state}})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Kniznica. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{handle__leds_8h_a517e5255faf04fc1fbba6727be0ca0df}\label{handle__leds_8h_a517e5255faf04fc1fbba6727be0ca0df}} 
+\index{handle\_leds.h@{handle\_leds.h}!handle\_leds@{handle\_leds}}
+\index{handle\_leds@{handle\_leds}!handle\_leds.h@{handle\_leds.h}}
+\doxysubsubsection{\texorpdfstring{handle\_leds()}{handle\_leds()}}
+{\footnotesize\ttfamily void handle\+\_\+leds (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{definitions_8h_ac6912460c5b2758b93e165e45473c433}{Destination\+State}}}]{leds\+\_\+state\mbox{[}5\mbox{]},  }\item[{\mbox{\hyperlink{definitions_8h_adafb5064646fb2f2832fa9c5f9544757}{Elevator\+State}} $\ast$}]{elevator\+\_\+state }\end{DoxyParamCaption})}
+
+Funkcia porovnáva stav vytahu a stav lediek. Posiela spravy vytahu aby boli tieto stavy rovnake, kontroluje pole destinations v \mbox{\hyperlink{structelevator__state}{elevator\+\_\+state}} voci ulozenemu stavu led. Ak nahodou led na poschodi, ktore ma byt navstivene nesvieti tak ju rozsvieti a opacne 

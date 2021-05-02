@@ -1,3 +1,7 @@
+/**
+ * @file    definitions.h
+ * @brief   Obsahuje definicie a typy
+ */
 #include <stdint.h>
 
 #ifndef DEFINITIONS_H_
@@ -79,53 +83,72 @@
 #define LOCK_THE_DOOR 0x01
 #define UNLOCK_THE_DOOR 0x00
 
+/*!
+ * Tento ciselnik eprezentuje stav vytahu
+ */
 typedef enum {
-	ARRIWING,
-	WAITING,
-	STOPPING,
-	LOCKING,
-	UNLOCKING,
-	MOVING
+	ARRIWING, /*!< Vytah prichadza na cielove podlazie */
+	WAITING,  /*!< Vytah stoji na poschodi a caka */
+	STOPPING, /*!< Vytah zastavuje na poschodi */
+	LOCKING,  /*!< Vytah zatvara dvere */
+	UNLOCKING, /*!< Vytah otvara dvere */
+	MOVING	   /*!< Vytah cestuje na podlazie*/
 } ElevatorDelayState;
-
+/*!
+ * Tento ciselnik reprezentuje smer vytahu
+ */
 typedef enum {
 	UP,
 	DOWN,
 	NONE
 } ElevatorDirection;
-
+/*!
+ * Tento ciselnik reprezentuje to ci sa ma navstivit poschodie
+ */
 typedef enum {
 	DESTINATION_VISIT,
 	DESTINATION_IGNORE
 } DestinationState;
 
+/*!
+ * Tento ciselnik reprezentuje stav citania spravy
+ */
 typedef enum {
-	WAITING_START_BYTE,
-	WAITING_RECEIVER_ADDRESS,
-	WAITING_SENDER_ADDRESS,
-	WAITING_DATA_LENGHT,
-	WAITING_DATA,
-	WAITING_CRC
+	WAITING_START_BYTE, /*!< Caka na pociatocny byte*/
+	WAITING_RECEIVER_ADDRESS, /*!< Caka na adresu prijimatela */
+	WAITING_SENDER_ADDRESS, /*!< Caka na adresu odosielatela */
+	WAITING_DATA_LENGHT, /*!< Caka na dlzku dat */
+	WAITING_DATA, /*!< Caka na data*/
+	WAITING_CRC /*!< Caka kym mu posle CRC kod */
 }MessageReadingState;
 
+/*!
+ * Tato struktura reprezentuje aktualny stav vytahu
+ */
 typedef struct elevator_state {
-	uint8_t position;
-	uint8_t destination;
-	DestinationState destinations[5];
-	uint32_t counter;
-	ElevatorDirection direction;
-	ElevatorDelayState state;
+	uint8_t position; /*!< Poschodie na ktorom sa vytah nachadza*/
+	uint8_t destination; /*!< Poschodie kam vytah smeruje*/
+	DestinationState destinations[5]; /*!< Poschodia ktore ma vytah navstivit*/
+	uint32_t counter; /*!< Pocitadlo na delay*/
+	ElevatorDirection direction; /*!< Smer vytahu*/
+	ElevatorDelayState state; /*!< Uklada stav vytahu*/
 } ElevatorState;
 
+/*!
+ * Tato struktura reprezentuje detaili poschodia
+ */
 typedef struct floor {
-	uint8_t number;
-	uint8_t door_led_address;
-	uint8_t door_button_address;
-	uint8_t elevator_led_address;
-	uint8_t elevator_button_addrees;
-	uint8_t switch_address;
+	uint8_t number; /*!< Cislo poschodia*/
+	uint8_t door_led_address; /*!< Adresa ledky pri dverach*/
+	uint8_t door_button_address; /*!< Adresa tlacidla na poschodi*/
+	uint8_t elevator_led_address; /*!< Adresa ledky vo vytahu*/
+	uint8_t elevator_button_addrees; /*!< Adresa tlacidla vo vytahu*/
+	uint8_t switch_address; /*!< Adresa prepinaca na poschodi*/
 } Floor;
 
+/*!
+ * Tato struktura prezentuje aktualny stav displeya, ktory zobrazuje poschodie a smer
+ */
 typedef struct display {
 	uint8_t floor;
 	ElevatorDirection direction;

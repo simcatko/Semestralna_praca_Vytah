@@ -1,28 +1,68 @@
 \hypertarget{structelevator__state}{}\doxysection{elevator\+\_\+state Struct Reference}
 \label{structelevator__state}\index{elevator\_state@{elevator\_state}}
+
+
+{\ttfamily \#include $<$definitions.\+h$>$}
+
 \doxysubsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{structelevator__state_a1e1320cfd39f6febcf8e4eb2b542f424}\label{structelevator__state_a1e1320cfd39f6febcf8e4eb2b542f424}} 
-uint8\+\_\+t {\bfseries position}
+uint8\+\_\+t \mbox{\hyperlink{structelevator__state_a1e1320cfd39f6febcf8e4eb2b542f424}{position}}
 \item 
-\mbox{\Hypertarget{structelevator__state_a42676c2cae17bc2fa151feea9e192342}\label{structelevator__state_a42676c2cae17bc2fa151feea9e192342}} 
-uint8\+\_\+t {\bfseries destination}
+uint8\+\_\+t \mbox{\hyperlink{structelevator__state_a42676c2cae17bc2fa151feea9e192342}{destination}}
 \item 
-\mbox{\Hypertarget{structelevator__state_a54d8470e793708f13ba1645989c6aea8}\label{structelevator__state_a54d8470e793708f13ba1645989c6aea8}} 
-Destination\+State {\bfseries destinations} \mbox{[}5\mbox{]}
+\mbox{\hyperlink{definitions_8h_ac6912460c5b2758b93e165e45473c433}{Destination\+State}} \mbox{\hyperlink{structelevator__state_a54d8470e793708f13ba1645989c6aea8}{destinations}} \mbox{[}5\mbox{]}
 \item 
-\mbox{\Hypertarget{structelevator__state_a51322ddb267b4729d6b5f2bb05d49fff}\label{structelevator__state_a51322ddb267b4729d6b5f2bb05d49fff}} 
-uint32\+\_\+t {\bfseries counter}
+uint32\+\_\+t \mbox{\hyperlink{structelevator__state_a51322ddb267b4729d6b5f2bb05d49fff}{counter}}
 \item 
-\mbox{\Hypertarget{structelevator__state_abf7f3c2b833fe7c1d8711b8a3776e183}\label{structelevator__state_abf7f3c2b833fe7c1d8711b8a3776e183}} 
-Elevator\+Direction {\bfseries direction}
+\mbox{\hyperlink{definitions_8h_a78fcbde4d2251075617fb22730589ca4}{Elevator\+Direction}} \mbox{\hyperlink{structelevator__state_abf7f3c2b833fe7c1d8711b8a3776e183}{direction}}
 \item 
-\mbox{\Hypertarget{structelevator__state_a0c754459d96b4cb0daece475c00ca38e}\label{structelevator__state_a0c754459d96b4cb0daece475c00ca38e}} 
-Elevator\+Delay\+State {\bfseries state}
+\mbox{\hyperlink{definitions_8h_a7ec74a6d9c7d91f30b3476f2ccc2b2b8}{Elevator\+Delay\+State}} \mbox{\hyperlink{structelevator__state_a0c754459d96b4cb0daece475c00ca38e}{state}}
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+Tato struktura reprezentuje aktualny stav vytahu 
+
+\doxysubsection{Field Documentation}
+\mbox{\Hypertarget{structelevator__state_a51322ddb267b4729d6b5f2bb05d49fff}\label{structelevator__state_a51322ddb267b4729d6b5f2bb05d49fff}} 
+\index{elevator\_state@{elevator\_state}!counter@{counter}}
+\index{counter@{counter}!elevator\_state@{elevator\_state}}
+\doxysubsubsection{\texorpdfstring{counter}{counter}}
+{\footnotesize\ttfamily uint32\+\_\+t counter}
+
+Pocitadlo na delay \mbox{\Hypertarget{structelevator__state_a42676c2cae17bc2fa151feea9e192342}\label{structelevator__state_a42676c2cae17bc2fa151feea9e192342}} 
+\index{elevator\_state@{elevator\_state}!destination@{destination}}
+\index{destination@{destination}!elevator\_state@{elevator\_state}}
+\doxysubsubsection{\texorpdfstring{destination}{destination}}
+{\footnotesize\ttfamily uint8\+\_\+t destination}
+
+Poschodie kam vytah smeruje \mbox{\Hypertarget{structelevator__state_a54d8470e793708f13ba1645989c6aea8}\label{structelevator__state_a54d8470e793708f13ba1645989c6aea8}} 
+\index{elevator\_state@{elevator\_state}!destinations@{destinations}}
+\index{destinations@{destinations}!elevator\_state@{elevator\_state}}
+\doxysubsubsection{\texorpdfstring{destinations}{destinations}}
+{\footnotesize\ttfamily \mbox{\hyperlink{definitions_8h_ac6912460c5b2758b93e165e45473c433}{Destination\+State}} destinations\mbox{[}5\mbox{]}}
+
+Poschodia ktore ma vytah navstivit \mbox{\Hypertarget{structelevator__state_abf7f3c2b833fe7c1d8711b8a3776e183}\label{structelevator__state_abf7f3c2b833fe7c1d8711b8a3776e183}} 
+\index{elevator\_state@{elevator\_state}!direction@{direction}}
+\index{direction@{direction}!elevator\_state@{elevator\_state}}
+\doxysubsubsection{\texorpdfstring{direction}{direction}}
+{\footnotesize\ttfamily \mbox{\hyperlink{definitions_8h_a78fcbde4d2251075617fb22730589ca4}{Elevator\+Direction}} direction}
+
+Smer vytahu \mbox{\Hypertarget{structelevator__state_a1e1320cfd39f6febcf8e4eb2b542f424}\label{structelevator__state_a1e1320cfd39f6febcf8e4eb2b542f424}} 
+\index{elevator\_state@{elevator\_state}!position@{position}}
+\index{position@{position}!elevator\_state@{elevator\_state}}
+\doxysubsubsection{\texorpdfstring{position}{position}}
+{\footnotesize\ttfamily uint8\+\_\+t position}
+
+Poschodie na ktorom sa vytah nachadza \mbox{\Hypertarget{structelevator__state_a0c754459d96b4cb0daece475c00ca38e}\label{structelevator__state_a0c754459d96b4cb0daece475c00ca38e}} 
+\index{elevator\_state@{elevator\_state}!state@{state}}
+\index{state@{state}!elevator\_state@{elevator\_state}}
+\doxysubsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily \mbox{\hyperlink{definitions_8h_a7ec74a6d9c7d91f30b3476f2ccc2b2b8}{Elevator\+Delay\+State}} state}
+
+Uklada stav vytahu 
+
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-Semka\+TRPAIS/source/definitions.\+h\end{DoxyCompactItemize}
+source/\mbox{\hyperlink{definitions_8h}{definitions.\+h}}\end{DoxyCompactItemize}

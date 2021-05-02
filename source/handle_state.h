@@ -1,3 +1,8 @@
+/**
+ * @file    handle_state.h
+ * @brief   Kniznica
+ */
+
 #include <stdint.h>
 #include <stdlib.h>
 #include <fsl_lpsci.h>

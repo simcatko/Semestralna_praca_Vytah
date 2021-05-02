@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Semka_TPRAIS: SemkaTRPAIS/source/definitions.h Source File</title>
+<title>Semestralna_Praca_Simona_Prokopova: source/definitions.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Semka_TPRAIS
+   <div id="projectname">Semestralna_Praca_Simona_Prokopova
    </div>
   </td>
  </tr>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_cab4221f776ee3080599af020583a22f.html">SemkaTRPAIS</a></li><li class="navelem"><a class="el" href="dir_e42af423812e5fadfa54a76b471dcc5d.html">source</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -69,136 +69,176 @@ $(function() {
 <div class="title">definitions.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#ifndef DEFINITIONS_H_</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#define DEFINITIONS_H_</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#define LED_ON 0x01</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#define LED_OFF 0x00</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define FLOOR_NONE 10</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#define FLOOR_P 0</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define FLOOR_1 1</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#define FLOOR_2 2</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#define FLOOR_3 3</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#define FLOOR_4 4</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#define HORNY_NARAZNIK 0xe5</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#define DOLNY_NARAZNIK 0xdf</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define LOCK_THE_DOOR 0x01</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define UNLOCK_THE_DOOR 0x00</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#define EMERGENCE_BREAK 0xf</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#define DEACTIVATE_BREAK 0x00</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#define ACTIVATE_BREAK 0x01</span></div>
+<a href="definitions_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef DEFINITIONS_H_</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define DEFINITIONS_H_</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#define LED_ON 0x01</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define LED_OFF 0x00</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#define FLOOR_NONE 10</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#define FLOOR_P 0</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define FLOOR_1 1</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#define FLOOR_2 2</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#define FLOOR_3 3</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define FLOOR_4 4</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define HORNY_NARAZNIK 0xe5</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#define DOLNY_NARAZNIK 0xdf</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#define LOCK_THE_DOOR 0x01</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#define UNLOCK_THE_DOOR 0x00</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#define MESSAGE_TYPE 0</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#define MESSAGE_RECEIVER_ADDRESS 1</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#define MESSAGE_VELKOST_DAT 3</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#define DISPLAY_DIRECTION_UP 0x01</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#define DISPLAY_DIRECTION_DOWN 0x02</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#define DISPLAY_DIRECTION_NONE 0x03</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#define EMERGENCE_BREAK 0xf</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#define DEACTIVATE_BREAK 0x00</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#define ACTIVATE_BREAK 0x01</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#define MESSAGE_TYPE 0</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#define MESSAGE_RECEIVER_ADDRESS 1</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#define MESSAGE_VELKOST_DAT 3</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#define DELAY 30000;</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#define LED1_ADDRESS 0x10</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#define LED2_ADDRESS 0x11</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#define LED3_ADDRESS 0x12</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#define LED4_ADDRESS 0x13</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#define LED5_ADDRESS 0x14</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#define BUTTON_P 0xc0</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#define BUTTON_1 0xc1</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#define BUTTON_2 0xc2</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#define BUTTON_3 0xc3</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#define BUTTON_4 0xc4</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#define BUTTON_IN_ELEVATOR_P 0xb0</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#define BUTTON_IN_ELEVATOR_1 0xb1</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#define BUTTON_IN_ELEVATOR_2 0xb2</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#define BUTTON_IN_ELEVATOR_3 0xb3</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#define BUTTON_IN_ELEVATOR_4 0xb4</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#define START_BYTE 0xA0</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#define ACK_BYTE 0xA1</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#define MY_ADDRESS 0x00</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#define DISPLAY_DIRECTION_UP 0x01</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#define DISPLAY_DIRECTION_DOWN 0x02</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#define DISPLAY_DIRECTION_NONE 0x03</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#define DELAY 30000;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#define LED1_ADDRESS 0x10</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#define LED2_ADDRESS 0x11</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#define LED3_ADDRESS 0x12</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#define LED4_ADDRESS 0x13</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#define LED5_ADDRESS 0x14</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#define BUTTON_P 0xc0</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#define BUTTON_1 0xc1</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#define BUTTON_2 0xc2</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#define BUTTON_3 0xc3</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#define BUTTON_4 0xc4</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#define BUTTON_IN_ELEVATOR_P 0xb0</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#define BUTTON_IN_ELEVATOR_1 0xb1</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#define BUTTON_IN_ELEVATOR_2 0xb2</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#define BUTTON_IN_ELEVATOR_3 0xb3</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#define BUTTON_IN_ELEVATOR_4 0xb4</span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#define ENGINE_ADDRESS 0xf1</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#define ENGINE_UP 70</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#define ENGINE_DOWN -70</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#define ENGINE_STOP 0</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#define DISPLAY_ADDRESS 0x30</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#define ELEVATOR_ADDRESS 0xf0</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#define TERMINAL_ADDRESS 0xd0</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#define LED_IN_ELEVATOR_P_ADDRESS 0x20</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#define LED_IN_ELEVATOR_1_ADDRESS 0x21</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#define LED_IN_ELEVATOR_2_ADDRESS 0x22</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#define LED_IN_ELEVATOR_3_ADDRESS 0x23</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#define LED_IN_ELEVATOR_4_ADDRESS 0x24</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#define FLOOR_P_SWITCH 0xe0</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#define FLOOR_1_SWITCH 0xe1</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#define FLOOR_2_SWITCH 0xe2</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#define FLOOR_3_SWITCH 0xe3</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#define FLOOR_4_SWITCH 0xe4</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#define LOCK_THE_DOOR 0x01</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#define UNLOCK_THE_DOOR 0x00</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    ARRIWING,</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    WAITING,</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    STOPPING,</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    LOCKING,</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    UNLOCKING,</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    MOVING</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;} ElevatorDelayState;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    UP,</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    DOWN,</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    NONE</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;} ElevatorDirection;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    DESTINATION_VISIT,</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    DESTINATION_IGNORE</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;} DestinationState;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="structelevator__state.html">  102</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structelevator__state.html">elevator_state</a> {</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    uint8_t position;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    uint8_t destination;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    DestinationState destinations[5];</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    uint32_t counter;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    ElevatorDirection direction;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    ElevatorDelayState state;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;} <a class="code" href="structelevator__state.html">ElevatorState</a>;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
-<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="structfloor.html">  111</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structfloor.html">floor</a> {</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    uint8_t number;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    uint8_t door_led_address;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    uint8_t door_button_address;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    uint8_t elevator_led_address;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    uint8_t elevator_button_addrees;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    uint8_t switch_address;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;} <a class="code" href="structfloor.html">Floor</a>;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
-<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="structdisplay.html">  120</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structdisplay.html">display</a> {</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    uint8_t <a class="code" href="structfloor.html">floor</a>;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    ElevatorDirection direction;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;} <a class="code" href="structdisplay.html">Display</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#define START_BYTE 0xA0</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#define ACK_BYTE 0xA1</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#define MY_ADDRESS 0x00</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#define ENGINE_ADDRESS 0xf1</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#define ENGINE_UP 70</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#define ENGINE_DOWN -70</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#define ENGINE_STOP 0</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#define DISPLAY_ADDRESS 0x30</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#define ELEVATOR_ADDRESS 0xf0</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#define TERMINAL_ADDRESS 0xd0</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#define LED_IN_ELEVATOR_P_ADDRESS 0x20</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#define LED_IN_ELEVATOR_1_ADDRESS 0x21</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#define LED_IN_ELEVATOR_2_ADDRESS 0x22</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#define LED_IN_ELEVATOR_3_ADDRESS 0x23</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#define LED_IN_ELEVATOR_4_ADDRESS 0x24</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#define FLOOR_P_SWITCH 0xe0</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#define FLOOR_1_SWITCH 0xe1</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#define FLOOR_2_SWITCH 0xe2</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#define FLOOR_3_SWITCH 0xe3</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#define FLOOR_4_SWITCH 0xe4</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#define LOCK_THE_DOOR 0x01</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#define UNLOCK_THE_DOOR 0x00</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="definitions_8h.html#a7ec74a6d9c7d91f30b3476f2ccc2b2b8">   89</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="definitions_8h.html#a7ec74a6d9c7d91f30b3476f2ccc2b2b8a46bf19070a19def35dc6a12d3080c49e">   90</a></span>&#160;    <a class="code" href="definitions_8h.html#a7ec74a6d9c7d91f30b3476f2ccc2b2b8a46bf19070a19def35dc6a12d3080c49e">ARRIWING</a>, </div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="definitions_8h.html#a7ec74a6d9c7d91f30b3476f2ccc2b2b8a757971c0bc5a1972d5f1b1be2c0e2087">   91</a></span>&#160;    <a class="code" href="definitions_8h.html#a7ec74a6d9c7d91f30b3476f2ccc2b2b8a757971c0bc5a1972d5f1b1be2c0e2087">WAITING</a>,  </div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="definitions_8h.html#a7ec74a6d9c7d91f30b3476f2ccc2b2b8a898cbaf2e64179c5cfdff4d10b3728c1">   92</a></span>&#160;    <a class="code" href="definitions_8h.html#a7ec74a6d9c7d91f30b3476f2ccc2b2b8a898cbaf2e64179c5cfdff4d10b3728c1">STOPPING</a>, </div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="definitions_8h.html#a7ec74a6d9c7d91f30b3476f2ccc2b2b8ad9f2b624542dc2f8e5d481a5926c4126">   93</a></span>&#160;    <a class="code" href="definitions_8h.html#a7ec74a6d9c7d91f30b3476f2ccc2b2b8ad9f2b624542dc2f8e5d481a5926c4126">LOCKING</a>,  </div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="definitions_8h.html#a7ec74a6d9c7d91f30b3476f2ccc2b2b8a48ae2602987a33f9449d8919905f64cb">   94</a></span>&#160;    <a class="code" href="definitions_8h.html#a7ec74a6d9c7d91f30b3476f2ccc2b2b8a48ae2602987a33f9449d8919905f64cb">UNLOCKING</a>, </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <a class="code" href="definitions_8h.html#a7ec74a6d9c7d91f30b3476f2ccc2b2b8a16ebdcb23eb5337fd5bc598fa8d6035d">MOVING</a>     </div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="definitions_8h.html#a7ec74a6d9c7d91f30b3476f2ccc2b2b8a16ebdcb23eb5337fd5bc598fa8d6035d">   96</a></span>&#160;} <a class="code" href="definitions_8h.html#a7ec74a6d9c7d91f30b3476f2ccc2b2b8">ElevatorDelayState</a>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="definitions_8h.html#a78fcbde4d2251075617fb22730589ca4">  100</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    UP,</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    DOWN,</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    NONE</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;} <a class="code" href="definitions_8h.html#a78fcbde4d2251075617fb22730589ca4">ElevatorDirection</a>;</div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="definitions_8h.html#ac6912460c5b2758b93e165e45473c433">  108</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    DESTINATION_VISIT,</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    DESTINATION_IGNORE</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;} <a class="code" href="definitions_8h.html#ac6912460c5b2758b93e165e45473c433">DestinationState</a>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="definitions_8h.html#a138fc8ead0a2640db83244700a62aabb">  116</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="definitions_8h.html#a138fc8ead0a2640db83244700a62aabbaaa6a81c45b15bb269b0716539d989f3a">  117</a></span>&#160;    <a class="code" href="definitions_8h.html#a138fc8ead0a2640db83244700a62aabbaaa6a81c45b15bb269b0716539d989f3a">WAITING_START_BYTE</a>, </div>
+<div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="definitions_8h.html#a138fc8ead0a2640db83244700a62aabba170c24a187e6cea8564c68dc614d61bb">  118</a></span>&#160;    <a class="code" href="definitions_8h.html#a138fc8ead0a2640db83244700a62aabba170c24a187e6cea8564c68dc614d61bb">WAITING_RECEIVER_ADDRESS</a>, </div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="definitions_8h.html#a138fc8ead0a2640db83244700a62aabbac31817441c1d3026cd0a1cc547d9f7ae">  119</a></span>&#160;    <a class="code" href="definitions_8h.html#a138fc8ead0a2640db83244700a62aabbac31817441c1d3026cd0a1cc547d9f7ae">WAITING_SENDER_ADDRESS</a>, </div>
+<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="definitions_8h.html#a138fc8ead0a2640db83244700a62aabba8825dbbb70bea2c382b2e9ee215b1527">  120</a></span>&#160;    <a class="code" href="definitions_8h.html#a138fc8ead0a2640db83244700a62aabba8825dbbb70bea2c382b2e9ee215b1527">WAITING_DATA_LENGHT</a>, </div>
+<div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="definitions_8h.html#a138fc8ead0a2640db83244700a62aabba5a43836fe893b81b44d364533f36d85d">  121</a></span>&#160;    <a class="code" href="definitions_8h.html#a138fc8ead0a2640db83244700a62aabba5a43836fe893b81b44d364533f36d85d">WAITING_DATA</a>, </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <a class="code" href="definitions_8h.html#a138fc8ead0a2640db83244700a62aabba5cbd7d0e9166ba87b8849f42e24aa8c3">WAITING_CRC</a> </div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="definitions_8h.html#a138fc8ead0a2640db83244700a62aabba5cbd7d0e9166ba87b8849f42e24aa8c3">  123</a></span>&#160;}<a class="code" href="definitions_8h.html#a138fc8ead0a2640db83244700a62aabb">MessageReadingState</a>;</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="keyword">extern</span> <a class="code" href="structfloor.html">Floor</a> floors[5];</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="astructdisplay_html"><div class="ttname"><a href="structdisplay.html">display</a></div><div class="ttdef"><b>Definition:</b> definitions.h:120</div></div>
-<div class="ttc" id="astructelevator__state_html"><div class="ttname"><a href="structelevator__state.html">elevator_state</a></div><div class="ttdef"><b>Definition:</b> definitions.h:102</div></div>
-<div class="ttc" id="astructfloor_html"><div class="ttname"><a href="structfloor.html">floor</a></div><div class="ttdef"><b>Definition:</b> definitions.h:111</div></div>
+<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="structelevator__state.html">  128</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structelevator__state.html">elevator_state</a> {</div>
+<div class="line"><a name="l00129"></a><span class="lineno"><a class="line" href="structelevator__state.html#a1e1320cfd39f6febcf8e4eb2b542f424">  129</a></span>&#160;    uint8_t <a class="code" href="structelevator__state.html#a1e1320cfd39f6febcf8e4eb2b542f424">position</a>; </div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="structelevator__state.html#a42676c2cae17bc2fa151feea9e192342">  130</a></span>&#160;    uint8_t <a class="code" href="structelevator__state.html#a42676c2cae17bc2fa151feea9e192342">destination</a>; </div>
+<div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="structelevator__state.html#a54d8470e793708f13ba1645989c6aea8">  131</a></span>&#160;    <a class="code" href="definitions_8h.html#ac6912460c5b2758b93e165e45473c433">DestinationState</a> <a class="code" href="structelevator__state.html#a54d8470e793708f13ba1645989c6aea8">destinations</a>[5]; </div>
+<div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="structelevator__state.html#a51322ddb267b4729d6b5f2bb05d49fff">  132</a></span>&#160;    uint32_t <a class="code" href="structelevator__state.html#a51322ddb267b4729d6b5f2bb05d49fff">counter</a>; </div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="structelevator__state.html#abf7f3c2b833fe7c1d8711b8a3776e183">  133</a></span>&#160;    <a class="code" href="definitions_8h.html#a78fcbde4d2251075617fb22730589ca4">ElevatorDirection</a> <a class="code" href="structelevator__state.html#abf7f3c2b833fe7c1d8711b8a3776e183">direction</a>; </div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="structelevator__state.html#a0c754459d96b4cb0daece475c00ca38e">  134</a></span>&#160;    <a class="code" href="definitions_8h.html#a7ec74a6d9c7d91f30b3476f2ccc2b2b8">ElevatorDelayState</a> <a class="code" href="structelevator__state.html#a0c754459d96b4cb0daece475c00ca38e">state</a>; </div>
+<div class="line"><a name="l00135"></a><span class="lineno"><a class="line" href="definitions_8h.html#adafb5064646fb2f2832fa9c5f9544757">  135</a></span>&#160;} <a class="code" href="definitions_8h.html#adafb5064646fb2f2832fa9c5f9544757">ElevatorState</a>;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno"><a class="line" href="structfloor.html">  140</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structfloor.html">floor</a> {</div>
+<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="structfloor.html#af57eaec6f3dec6de717735725c9908a6">  141</a></span>&#160;    uint8_t <a class="code" href="structfloor.html#af57eaec6f3dec6de717735725c9908a6">number</a>; </div>
+<div class="line"><a name="l00142"></a><span class="lineno"><a class="line" href="structfloor.html#a4414ad806ab91e9572cd172e17f8312e">  142</a></span>&#160;    uint8_t <a class="code" href="structfloor.html#a4414ad806ab91e9572cd172e17f8312e">door_led_address</a>; </div>
+<div class="line"><a name="l00143"></a><span class="lineno"><a class="line" href="structfloor.html#afc2f8fc5a96b98af0d7e8c3e83370071">  143</a></span>&#160;    uint8_t <a class="code" href="structfloor.html#afc2f8fc5a96b98af0d7e8c3e83370071">door_button_address</a>; </div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="structfloor.html#a5a7b2a4691b7db38497a35ee5857a70a">  144</a></span>&#160;    uint8_t <a class="code" href="structfloor.html#a5a7b2a4691b7db38497a35ee5857a70a">elevator_led_address</a>; </div>
+<div class="line"><a name="l00145"></a><span class="lineno"><a class="line" href="structfloor.html#a485af28fc115c1566380c1bf39f7fe0b">  145</a></span>&#160;    uint8_t <a class="code" href="structfloor.html#a485af28fc115c1566380c1bf39f7fe0b">elevator_button_addrees</a>; </div>
+<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="structfloor.html#ab9492ba3b308aa65313db112602554f9">  146</a></span>&#160;    uint8_t <a class="code" href="structfloor.html#ab9492ba3b308aa65313db112602554f9">switch_address</a>; </div>
+<div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="definitions_8h.html#a2c3f0b95f940f8a2a0e3614bc6c4653c">  147</a></span>&#160;} <a class="code" href="definitions_8h.html#a2c3f0b95f940f8a2a0e3614bc6c4653c">Floor</a>;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno"><a class="line" href="structdisplay.html">  152</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structdisplay.html">display</a> {</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    uint8_t <a class="code" href="structfloor.html">floor</a>;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <a class="code" href="definitions_8h.html#a78fcbde4d2251075617fb22730589ca4">ElevatorDirection</a> direction;</div>
+<div class="line"><a name="l00155"></a><span class="lineno"><a class="line" href="definitions_8h.html#a9ce75061de2eded7048978210464edd6">  155</a></span>&#160;} <a class="code" href="definitions_8h.html#a9ce75061de2eded7048978210464edd6">Display</a>;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="keyword">extern</span> <a class="code" href="structfloor.html">Floor</a> <a class="code" href="definitions_8h.html#a1c895b2cd23e038bac3266457f950254">floors</a>[5];</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="adefinitions_8h_html_a138fc8ead0a2640db83244700a62aabb"><div class="ttname"><a href="definitions_8h.html#a138fc8ead0a2640db83244700a62aabb">MessageReadingState</a></div><div class="ttdeci">MessageReadingState</div><div class="ttdef"><b>Definition:</b> definitions.h:116</div></div>
+<div class="ttc" id="adefinitions_8h_html_a138fc8ead0a2640db83244700a62aabba170c24a187e6cea8564c68dc614d61bb"><div class="ttname"><a href="definitions_8h.html#a138fc8ead0a2640db83244700a62aabba170c24a187e6cea8564c68dc614d61bb">WAITING_RECEIVER_ADDRESS</a></div><div class="ttdeci">@ WAITING_RECEIVER_ADDRESS</div><div class="ttdef"><b>Definition:</b> definitions.h:118</div></div>
+<div class="ttc" id="adefinitions_8h_html_a138fc8ead0a2640db83244700a62aabba5a43836fe893b81b44d364533f36d85d"><div class="ttname"><a href="definitions_8h.html#a138fc8ead0a2640db83244700a62aabba5a43836fe893b81b44d364533f36d85d">WAITING_DATA</a></div><div class="ttdeci">@ WAITING_DATA</div><div class="ttdef"><b>Definition:</b> definitions.h:121</div></div>
+<div class="ttc" id="adefinitions_8h_html_a138fc8ead0a2640db83244700a62aabba5cbd7d0e9166ba87b8849f42e24aa8c3"><div class="ttname"><a href="definitions_8h.html#a138fc8ead0a2640db83244700a62aabba5cbd7d0e9166ba87b8849f42e24aa8c3">WAITING_CRC</a></div><div class="ttdeci">@ WAITING_CRC</div><div class="ttdef"><b>Definition:</b> definitions.h:122</div></div>
+<div class="ttc" id="adefinitions_8h_html_a138fc8ead0a2640db83244700a62aabba8825dbbb70bea2c382b2e9ee215b1527"><div class="ttname"><a href="definitions_8h.html#a138fc8ead0a2640db83244700a62aabba8825dbbb70bea2c382b2e9ee215b1527">WAITING_DATA_LENGHT</a></div><div class="ttdeci">@ WAITING_DATA_LENGHT</div><div class="ttdef"><b>Definition:</b> definitions.h:120</div></div>
+<div class="ttc" id="adefinitions_8h_html_a138fc8ead0a2640db83244700a62aabbaaa6a81c45b15bb269b0716539d989f3a"><div class="ttname"><a href="definitions_8h.html#a138fc8ead0a2640db83244700a62aabbaaa6a81c45b15bb269b0716539d989f3a">WAITING_START_BYTE</a></div><div class="ttdeci">@ WAITING_START_BYTE</div><div class="ttdef"><b>Definition:</b> definitions.h:117</div></div>
+<div class="ttc" id="adefinitions_8h_html_a138fc8ead0a2640db83244700a62aabbac31817441c1d3026cd0a1cc547d9f7ae"><div class="ttname"><a href="definitions_8h.html#a138fc8ead0a2640db83244700a62aabbac31817441c1d3026cd0a1cc547d9f7ae">WAITING_SENDER_ADDRESS</a></div><div class="ttdeci">@ WAITING_SENDER_ADDRESS</div><div class="ttdef"><b>Definition:</b> definitions.h:119</div></div>
+<div class="ttc" id="adefinitions_8h_html_a1c895b2cd23e038bac3266457f950254"><div class="ttname"><a href="definitions_8h.html#a1c895b2cd23e038bac3266457f950254">floors</a></div><div class="ttdeci">Floor floors[5]</div><div class="ttdef"><b>Definition:</b> definitions.c:11</div></div>
+<div class="ttc" id="adefinitions_8h_html_a2c3f0b95f940f8a2a0e3614bc6c4653c"><div class="ttname"><a href="definitions_8h.html#a2c3f0b95f940f8a2a0e3614bc6c4653c">Floor</a></div><div class="ttdeci">struct floor Floor</div></div>
+<div class="ttc" id="adefinitions_8h_html_a78fcbde4d2251075617fb22730589ca4"><div class="ttname"><a href="definitions_8h.html#a78fcbde4d2251075617fb22730589ca4">ElevatorDirection</a></div><div class="ttdeci">ElevatorDirection</div><div class="ttdef"><b>Definition:</b> definitions.h:100</div></div>
+<div class="ttc" id="adefinitions_8h_html_a7ec74a6d9c7d91f30b3476f2ccc2b2b8"><div class="ttname"><a href="definitions_8h.html#a7ec74a6d9c7d91f30b3476f2ccc2b2b8">ElevatorDelayState</a></div><div class="ttdeci">ElevatorDelayState</div><div class="ttdef"><b>Definition:</b> definitions.h:89</div></div>
+<div class="ttc" id="adefinitions_8h_html_a7ec74a6d9c7d91f30b3476f2ccc2b2b8a16ebdcb23eb5337fd5bc598fa8d6035d"><div class="ttname"><a href="definitions_8h.html#a7ec74a6d9c7d91f30b3476f2ccc2b2b8a16ebdcb23eb5337fd5bc598fa8d6035d">MOVING</a></div><div class="ttdeci">@ MOVING</div><div class="ttdef"><b>Definition:</b> definitions.h:95</div></div>
+<div class="ttc" id="adefinitions_8h_html_a7ec74a6d9c7d91f30b3476f2ccc2b2b8a46bf19070a19def35dc6a12d3080c49e"><div class="ttname"><a href="definitions_8h.html#a7ec74a6d9c7d91f30b3476f2ccc2b2b8a46bf19070a19def35dc6a12d3080c49e">ARRIWING</a></div><div class="ttdeci">@ ARRIWING</div><div class="ttdef"><b>Definition:</b> definitions.h:90</div></div>
+<div class="ttc" id="adefinitions_8h_html_a7ec74a6d9c7d91f30b3476f2ccc2b2b8a48ae2602987a33f9449d8919905f64cb"><div class="ttname"><a href="definitions_8h.html#a7ec74a6d9c7d91f30b3476f2ccc2b2b8a48ae2602987a33f9449d8919905f64cb">UNLOCKING</a></div><div class="ttdeci">@ UNLOCKING</div><div class="ttdef"><b>Definition:</b> definitions.h:94</div></div>
+<div class="ttc" id="adefinitions_8h_html_a7ec74a6d9c7d91f30b3476f2ccc2b2b8a757971c0bc5a1972d5f1b1be2c0e2087"><div class="ttname"><a href="definitions_8h.html#a7ec74a6d9c7d91f30b3476f2ccc2b2b8a757971c0bc5a1972d5f1b1be2c0e2087">WAITING</a></div><div class="ttdeci">@ WAITING</div><div class="ttdef"><b>Definition:</b> definitions.h:91</div></div>
+<div class="ttc" id="adefinitions_8h_html_a7ec74a6d9c7d91f30b3476f2ccc2b2b8a898cbaf2e64179c5cfdff4d10b3728c1"><div class="ttname"><a href="definitions_8h.html#a7ec74a6d9c7d91f30b3476f2ccc2b2b8a898cbaf2e64179c5cfdff4d10b3728c1">STOPPING</a></div><div class="ttdeci">@ STOPPING</div><div class="ttdef"><b>Definition:</b> definitions.h:92</div></div>
+<div class="ttc" id="adefinitions_8h_html_a7ec74a6d9c7d91f30b3476f2ccc2b2b8ad9f2b624542dc2f8e5d481a5926c4126"><div class="ttname"><a href="definitions_8h.html#a7ec74a6d9c7d91f30b3476f2ccc2b2b8ad9f2b624542dc2f8e5d481a5926c4126">LOCKING</a></div><div class="ttdeci">@ LOCKING</div><div class="ttdef"><b>Definition:</b> definitions.h:93</div></div>
+<div class="ttc" id="adefinitions_8h_html_a9ce75061de2eded7048978210464edd6"><div class="ttname"><a href="definitions_8h.html#a9ce75061de2eded7048978210464edd6">Display</a></div><div class="ttdeci">struct display Display</div></div>
+<div class="ttc" id="adefinitions_8h_html_ac6912460c5b2758b93e165e45473c433"><div class="ttname"><a href="definitions_8h.html#ac6912460c5b2758b93e165e45473c433">DestinationState</a></div><div class="ttdeci">DestinationState</div><div class="ttdef"><b>Definition:</b> definitions.h:108</div></div>
+<div class="ttc" id="adefinitions_8h_html_adafb5064646fb2f2832fa9c5f9544757"><div class="ttname"><a href="definitions_8h.html#adafb5064646fb2f2832fa9c5f9544757">ElevatorState</a></div><div class="ttdeci">struct elevator_state ElevatorState</div></div>
+<div class="ttc" id="astructdisplay_html"><div class="ttname"><a href="structdisplay.html">display</a></div><div class="ttdef"><b>Definition:</b> definitions.h:152</div></div>
+<div class="ttc" id="astructelevator__state_html"><div class="ttname"><a href="structelevator__state.html">elevator_state</a></div><div class="ttdef"><b>Definition:</b> definitions.h:128</div></div>
+<div class="ttc" id="astructelevator__state_html_a0c754459d96b4cb0daece475c00ca38e"><div class="ttname"><a href="structelevator__state.html#a0c754459d96b4cb0daece475c00ca38e">elevator_state::state</a></div><div class="ttdeci">ElevatorDelayState state</div><div class="ttdef"><b>Definition:</b> definitions.h:134</div></div>
+<div class="ttc" id="astructelevator__state_html_a1e1320cfd39f6febcf8e4eb2b542f424"><div class="ttname"><a href="structelevator__state.html#a1e1320cfd39f6febcf8e4eb2b542f424">elevator_state::position</a></div><div class="ttdeci">uint8_t position</div><div class="ttdef"><b>Definition:</b> definitions.h:129</div></div>
+<div class="ttc" id="astructelevator__state_html_a42676c2cae17bc2fa151feea9e192342"><div class="ttname"><a href="structelevator__state.html#a42676c2cae17bc2fa151feea9e192342">elevator_state::destination</a></div><div class="ttdeci">uint8_t destination</div><div class="ttdef"><b>Definition:</b> definitions.h:130</div></div>
+<div class="ttc" id="astructelevator__state_html_a51322ddb267b4729d6b5f2bb05d49fff"><div class="ttname"><a href="structelevator__state.html#a51322ddb267b4729d6b5f2bb05d49fff">elevator_state::counter</a></div><div class="ttdeci">uint32_t counter</div><div class="ttdef"><b>Definition:</b> definitions.h:132</div></div>
+<div class="ttc" id="astructelevator__state_html_a54d8470e793708f13ba1645989c6aea8"><div class="ttname"><a href="structelevator__state.html#a54d8470e793708f13ba1645989c6aea8">elevator_state::destinations</a></div><div class="ttdeci">DestinationState destinations[5]</div><div class="ttdef"><b>Definition:</b> definitions.h:131</div></div>
+<div class="ttc" id="astructelevator__state_html_abf7f3c2b833fe7c1d8711b8a3776e183"><div class="ttname"><a href="structelevator__state.html#abf7f3c2b833fe7c1d8711b8a3776e183">elevator_state::direction</a></div><div class="ttdeci">ElevatorDirection direction</div><div class="ttdef"><b>Definition:</b> definitions.h:133</div></div>
+<div class="ttc" id="astructfloor_html"><div class="ttname"><a href="structfloor.html">floor</a></div><div class="ttdef"><b>Definition:</b> definitions.h:140</div></div>
+<div class="ttc" id="astructfloor_html_a4414ad806ab91e9572cd172e17f8312e"><div class="ttname"><a href="structfloor.html#a4414ad806ab91e9572cd172e17f8312e">floor::door_led_address</a></div><div class="ttdeci">uint8_t door_led_address</div><div class="ttdef"><b>Definition:</b> definitions.h:142</div></div>
+<div class="ttc" id="astructfloor_html_a485af28fc115c1566380c1bf39f7fe0b"><div class="ttname"><a href="structfloor.html#a485af28fc115c1566380c1bf39f7fe0b">floor::elevator_button_addrees</a></div><div class="ttdeci">uint8_t elevator_button_addrees</div><div class="ttdef"><b>Definition:</b> definitions.h:145</div></div>
+<div class="ttc" id="astructfloor_html_a5a7b2a4691b7db38497a35ee5857a70a"><div class="ttname"><a href="structfloor.html#a5a7b2a4691b7db38497a35ee5857a70a">floor::elevator_led_address</a></div><div class="ttdeci">uint8_t elevator_led_address</div><div class="ttdef"><b>Definition:</b> definitions.h:144</div></div>
+<div class="ttc" id="astructfloor_html_ab9492ba3b308aa65313db112602554f9"><div class="ttname"><a href="structfloor.html#ab9492ba3b308aa65313db112602554f9">floor::switch_address</a></div><div class="ttdeci">uint8_t switch_address</div><div class="ttdef"><b>Definition:</b> definitions.h:146</div></div>
+<div class="ttc" id="astructfloor_html_af57eaec6f3dec6de717735725c9908a6"><div class="ttname"><a href="structfloor.html#af57eaec6f3dec6de717735725c9908a6">floor::number</a></div><div class="ttdeci">uint8_t number</div><div class="ttdef"><b>Definition:</b> definitions.h:141</div></div>
+<div class="ttc" id="astructfloor_html_afc2f8fc5a96b98af0d7e8c3e83370071"><div class="ttname"><a href="structfloor.html#afc2f8fc5a96b98af0d7e8c3e83370071">floor::door_button_address</a></div><div class="ttdeci">uint8_t door_button_address</div><div class="ttdef"><b>Definition:</b> definitions.h:143</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

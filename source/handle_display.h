@@ -1,3 +1,8 @@
+/**
+ * @file    handle_display.h
+ * @brief   Kniznica
+ */
+
 #include <stdint.h>
 #include <fsl_lpsci.h>
 #include <definitions.h>

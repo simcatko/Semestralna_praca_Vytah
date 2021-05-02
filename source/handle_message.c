@@ -1,13 +1,25 @@
+/*!
+ * \file handle_message.c
+ * \brief Obsahuje funkcie na spracovanie sprav
+ */
 #include "handle_message.h"
 
+/*!
+ * Funkcia nastavi poziciu vytahu
+ */
 void Handle_switch(ElevatorState *elevator_state, Floor *floor) {
 	elevator_state->position = floor->number;
 }
 
+/*!
+ * Funkcia oznaci poschodie aby sa navstivilo
+ */
 void Handle_button(ElevatorState *elevator_state, Floor *floor) {
 	elevator_state->destinations[floor->number] = DESTINATION_VISIT;
 }
-// spracovava spravu co je prijata
+/*!
+ * Funkcia spracovava spravy od tlacidiel a prepinacov
+ */
 void handle_message(uint8_t message[262], ElevatorState *elevator_state) {
 	switch (message[MESSAGE_SENDER_ADDRESS]) {
 	case BUTTON_P:

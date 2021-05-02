@@ -1,8 +1,18 @@
+/*!
+ * \file handle_engine.c
+ * \brief Subor obsahuje funkciu na riadene motora vytahu
+ */
+
+#include <comunication.h>
 #include "handle_engine.h"
 #include "definitions.h"
-#include "komunikacia.h"
 
-void handle_engine(ElevatorDirection *engine_direction, ElevatorState *elevator_state) {
+/*!
+ * Funkcia porovnáva stav vytahu a stav motora
+ * posiela spravy vytahu aby boli tieto stavy rovnake
+ */
+void handle_engine(ElevatorDirection *engine_direction,
+		ElevatorState *elevator_state) {
 	if (*engine_direction != elevator_state->direction) {
 		*engine_direction = elevator_state->direction;
 

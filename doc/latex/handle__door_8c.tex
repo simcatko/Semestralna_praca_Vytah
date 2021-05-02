@@ -1,0 +1,30 @@
+\hypertarget{handle__door_8c}{}\doxysection{source/handle\+\_\+door.c File Reference}
+\label{handle__door_8c}\index{source/handle\_door.c@{source/handle\_door.c}}
+
+
+Subor obsahuje funkciu na pracu s dverami vytahu.  
+
+
+{\ttfamily \#include $<$comunication.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}handle\+\_\+door.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}definitions.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{handle__door_8c_a3550490b094a849b2100d6098e48bccf}{handle\+\_\+door}} (\mbox{\hyperlink{definitions_8h_adafb5064646fb2f2832fa9c5f9544757}{Elevator\+State}} $\ast$\mbox{\hyperlink{structelevator__state}{elevator\+\_\+state}}, int $\ast$doors\+\_\+locked)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Subor obsahuje funkciu na pracu s dverami vytahu. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{handle__door_8c_a3550490b094a849b2100d6098e48bccf}\label{handle__door_8c_a3550490b094a849b2100d6098e48bccf}} 
+\index{handle\_door.c@{handle\_door.c}!handle\_door@{handle\_door}}
+\index{handle\_door@{handle\_door}!handle\_door.c@{handle\_door.c}}
+\doxysubsubsection{\texorpdfstring{handle\_door()}{handle\_door()}}
+{\footnotesize\ttfamily void handle\+\_\+door (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{definitions_8h_adafb5064646fb2f2832fa9c5f9544757}{Elevator\+State}} $\ast$}]{elevator\+\_\+state,  }\item[{int $\ast$}]{doors\+\_\+locked }\end{DoxyParamCaption})}
+
+Funkcia porovnáva stav vytahu a stav dveri. Posiela spravy vytahu aby boli tieto stavy rovnake. Ak je stav vytahu LOCKING a dvere su otvorene pošle spravu aby sa zavreli, ak je stav vytahu UNLOCKING a dvere su zatvorene posle spravu aby sa otvorili 

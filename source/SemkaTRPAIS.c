@@ -1,8 +1,10 @@
 /**
- * @file    Vytah_semestralna_praca.cpp
- * @brief   Application entry point.
+ * @file    SemkaTRPAIS.c
+ * @brief   Hlavny subor
+ * @detail	Obsahuje startovaciu funkciu programu a hlavny cyklus
  */
 
+#include <comunication.h>
 #include <definitions.h>
 #include <stdio.h>
 #include "board.h"
@@ -13,7 +15,6 @@
 #include "fsl_debug_console.h"
 #include <fsl_lpsci.h>
 #include <stdbool.h>
-#include "komunikacia.h"
 #include "handle_message.h"
 #include "handle_display.h"
 #include "handle_door.h"
@@ -34,6 +35,8 @@ uint8_t process_message = 0;
  * Spracováva správu po bajtoch
  * Globálne si drží stav spracovavania v globalnej premennej stav_citania
  * Ak sa podari nacitat celu spravu, nastavi proces_message na 1
+ *
+ * ![Stavovy diagram](Stavovydiagram-Page-2.png)
  */
 void handle_message_byte(uint8_t byte){
 	switch (stav_citania) {

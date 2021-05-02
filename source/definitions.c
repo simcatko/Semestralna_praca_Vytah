@@ -1,5 +1,13 @@
+/**
+ * @file    definitions.c
+ * @brief   Obsahuje staticke data
+ */
+
 #include "definitions.h"
 
+/*!
+ * V tejto premennej su ulozene detaili ku kazdemu poschodiu
+ */
 Floor floors[] = {
 	{
 		.number = 0,

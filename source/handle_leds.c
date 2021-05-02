@@ -1,7 +1,18 @@
+/*!
+ * \file handle_leds.c
+ * \brief Subor obsahuje funkciu na riadenie lediek
+ */
+#include <comunication.h>
 #include "handle_leds.h"
 #include "definitions.h"
-#include "komunikacia.h"
 
+
+/*!
+ * Funkcia porovnáva stav vytahu a stav lediek.
+ * Posiela spravy vytahu aby boli tieto stavy rovnake,
+ * kontroluje pole destinations v elevator_state voci ulozenemu stavu led.
+ * Ak nahodou led na poschodi, ktore ma byt navstivene nesvieti tak ju rozsvieti a opacne
+ */
 void handle_leds(DestinationState leds_state[5], ElevatorState *elevator_state) {
 	for (int li = 0; li < 5; li++) {
 		if (leds_state[li] != elevator_state->destinations[li]) {

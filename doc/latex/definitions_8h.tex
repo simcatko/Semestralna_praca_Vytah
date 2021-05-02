@@ -1,0 +1,358 @@
+\hypertarget{definitions_8h}{}\doxysection{source/definitions.h File Reference}
+\label{definitions_8h}\index{source/definitions.h@{source/definitions.h}}
+
+
+Obsahuje definicie a typy.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structelevator__state}{elevator\+\_\+state}}
+\item 
+struct \mbox{\hyperlink{structfloor}{floor}}
+\item 
+struct \mbox{\hyperlink{structdisplay}{display}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{definitions_8h_af2e697ac60e05813d45ea2c9c9e79c25}\label{definitions_8h_af2e697ac60e05813d45ea2c9c9e79c25}} 
+\#define {\bfseries LED\+\_\+\+ON}~0x01
+\item 
+\mbox{\Hypertarget{definitions_8h_a80700bb63bd56ebabbb4728aa433fd29}\label{definitions_8h_a80700bb63bd56ebabbb4728aa433fd29}} 
+\#define {\bfseries LED\+\_\+\+OFF}~0x00
+\item 
+\mbox{\Hypertarget{definitions_8h_ae10a8227a98a20917329fc4395fbb432}\label{definitions_8h_ae10a8227a98a20917329fc4395fbb432}} 
+\#define {\bfseries FLOOR\+\_\+\+NONE}~10
+\item 
+\mbox{\Hypertarget{definitions_8h_a7bf067a6d1d8699a62ef2793507b7e2b}\label{definitions_8h_a7bf067a6d1d8699a62ef2793507b7e2b}} 
+\#define {\bfseries FLOOR\+\_\+P}~0
+\item 
+\mbox{\Hypertarget{definitions_8h_a87e8dbd369c5c3a446dbbd6d5296dee0}\label{definitions_8h_a87e8dbd369c5c3a446dbbd6d5296dee0}} 
+\#define {\bfseries FLOOR\+\_\+1}~1
+\item 
+\mbox{\Hypertarget{definitions_8h_aba1fc959d7b559459eb48e6941c69203}\label{definitions_8h_aba1fc959d7b559459eb48e6941c69203}} 
+\#define {\bfseries FLOOR\+\_\+2}~2
+\item 
+\mbox{\Hypertarget{definitions_8h_ad89d57d98742b3c41672465f91e23d19}\label{definitions_8h_ad89d57d98742b3c41672465f91e23d19}} 
+\#define {\bfseries FLOOR\+\_\+3}~3
+\item 
+\mbox{\Hypertarget{definitions_8h_ad2cf1b10e301b1161b49610f925595e6}\label{definitions_8h_ad2cf1b10e301b1161b49610f925595e6}} 
+\#define {\bfseries FLOOR\+\_\+4}~4
+\item 
+\mbox{\Hypertarget{definitions_8h_ac97c36ba50446e4dce1643d72f57d4c9}\label{definitions_8h_ac97c36ba50446e4dce1643d72f57d4c9}} 
+\#define {\bfseries HORNY\+\_\+\+NARAZNIK}~0xe5
+\item 
+\mbox{\Hypertarget{definitions_8h_aad0c4d954564b2ccd139cf45b85ee7f2}\label{definitions_8h_aad0c4d954564b2ccd139cf45b85ee7f2}} 
+\#define {\bfseries DOLNY\+\_\+\+NARAZNIK}~0xdf
+\item 
+\mbox{\Hypertarget{definitions_8h_a1a3db9e17f03a048c0293d0b46dea326}\label{definitions_8h_a1a3db9e17f03a048c0293d0b46dea326}} 
+\#define {\bfseries LOCK\+\_\+\+THE\+\_\+\+DOOR}~0x01
+\item 
+\mbox{\Hypertarget{definitions_8h_ab5fa748fd4fe7b9e8a0f5aba6c40913b}\label{definitions_8h_ab5fa748fd4fe7b9e8a0f5aba6c40913b}} 
+\#define {\bfseries UNLOCK\+\_\+\+THE\+\_\+\+DOOR}~0x00
+\item 
+\mbox{\Hypertarget{definitions_8h_a0fb67deb1a1a86c75c8c754e28ea4d09}\label{definitions_8h_a0fb67deb1a1a86c75c8c754e28ea4d09}} 
+\#define {\bfseries EMERGENCE\+\_\+\+BREAK}~0xf
+\item 
+\mbox{\Hypertarget{definitions_8h_aed02c9b2a73640473dd887248e05af29}\label{definitions_8h_aed02c9b2a73640473dd887248e05af29}} 
+\#define {\bfseries DEACTIVATE\+\_\+\+BREAK}~0x00
+\item 
+\mbox{\Hypertarget{definitions_8h_a24bdd1a76535878abb49733856a33e16}\label{definitions_8h_a24bdd1a76535878abb49733856a33e16}} 
+\#define {\bfseries ACTIVATE\+\_\+\+BREAK}~0x01
+\item 
+\mbox{\Hypertarget{definitions_8h_a7fba09db2bbeb0dbcca0105428c5a652}\label{definitions_8h_a7fba09db2bbeb0dbcca0105428c5a652}} 
+\#define {\bfseries MESSAGE\+\_\+\+TYPE}~0
+\item 
+\mbox{\Hypertarget{definitions_8h_a547800f26a2007321f72facf4bb04bc9}\label{definitions_8h_a547800f26a2007321f72facf4bb04bc9}} 
+\#define {\bfseries MESSAGE\+\_\+\+RECEIVER\+\_\+\+ADDRESS}~1
+\item 
+\mbox{\Hypertarget{definitions_8h_a49f75a63e04686d8e19c63524f7340ec}\label{definitions_8h_a49f75a63e04686d8e19c63524f7340ec}} 
+\#define {\bfseries MESSAGE\+\_\+\+VELKOST\+\_\+\+DAT}~3
+\item 
+\mbox{\Hypertarget{definitions_8h_a84c2c89b995491c1ac4254b8045834d2}\label{definitions_8h_a84c2c89b995491c1ac4254b8045834d2}} 
+\#define {\bfseries DISPLAY\+\_\+\+DIRECTION\+\_\+\+UP}~0x01
+\item 
+\mbox{\Hypertarget{definitions_8h_ae7e39f25a91e549048d22afed3b78513}\label{definitions_8h_ae7e39f25a91e549048d22afed3b78513}} 
+\#define {\bfseries DISPLAY\+\_\+\+DIRECTION\+\_\+\+DOWN}~0x02
+\item 
+\mbox{\Hypertarget{definitions_8h_acddc302e6e36c91d5da3f7301de7a55d}\label{definitions_8h_acddc302e6e36c91d5da3f7301de7a55d}} 
+\#define {\bfseries DISPLAY\+\_\+\+DIRECTION\+\_\+\+NONE}~0x03
+\item 
+\mbox{\Hypertarget{definitions_8h_a62249e384b997229a3e2ae74ade334e2}\label{definitions_8h_a62249e384b997229a3e2ae74ade334e2}} 
+\#define {\bfseries DELAY}~30000;
+\item 
+\mbox{\Hypertarget{definitions_8h_abb4d9faeda5ae039d81caf535f8f6db4}\label{definitions_8h_abb4d9faeda5ae039d81caf535f8f6db4}} 
+\#define {\bfseries LED1\+\_\+\+ADDRESS}~0x10
+\item 
+\mbox{\Hypertarget{definitions_8h_a8c8557f6fccb95765c77a5ee780d2ced}\label{definitions_8h_a8c8557f6fccb95765c77a5ee780d2ced}} 
+\#define {\bfseries LED2\+\_\+\+ADDRESS}~0x11
+\item 
+\mbox{\Hypertarget{definitions_8h_ab1402f9dbc633e7cf552aadea5d73b86}\label{definitions_8h_ab1402f9dbc633e7cf552aadea5d73b86}} 
+\#define {\bfseries LED3\+\_\+\+ADDRESS}~0x12
+\item 
+\mbox{\Hypertarget{definitions_8h_a95483dc642ae1005665742b40bcf2866}\label{definitions_8h_a95483dc642ae1005665742b40bcf2866}} 
+\#define {\bfseries LED4\+\_\+\+ADDRESS}~0x13
+\item 
+\mbox{\Hypertarget{definitions_8h_aa93661a4cb1ccb254556b3742ae2c7ec}\label{definitions_8h_aa93661a4cb1ccb254556b3742ae2c7ec}} 
+\#define {\bfseries LED5\+\_\+\+ADDRESS}~0x14
+\item 
+\mbox{\Hypertarget{definitions_8h_a8ec96e0c2ee06ded837ab1cc3fa5f784}\label{definitions_8h_a8ec96e0c2ee06ded837ab1cc3fa5f784}} 
+\#define {\bfseries BUTTON\+\_\+P}~0xc0
+\item 
+\mbox{\Hypertarget{definitions_8h_af58f5adf2c4e479e30f2efaa24e38324}\label{definitions_8h_af58f5adf2c4e479e30f2efaa24e38324}} 
+\#define {\bfseries BUTTON\+\_\+1}~0xc1
+\item 
+\mbox{\Hypertarget{definitions_8h_a46acb6114f87027ec8fa196c02ea7d81}\label{definitions_8h_a46acb6114f87027ec8fa196c02ea7d81}} 
+\#define {\bfseries BUTTON\+\_\+2}~0xc2
+\item 
+\mbox{\Hypertarget{definitions_8h_aec518359a13ecef01c1f596fea855364}\label{definitions_8h_aec518359a13ecef01c1f596fea855364}} 
+\#define {\bfseries BUTTON\+\_\+3}~0xc3
+\item 
+\mbox{\Hypertarget{definitions_8h_a9bbe94022b11df96e0f4e9147822ed79}\label{definitions_8h_a9bbe94022b11df96e0f4e9147822ed79}} 
+\#define {\bfseries BUTTON\+\_\+4}~0xc4
+\item 
+\mbox{\Hypertarget{definitions_8h_aab192fb097a812fdf52226bc81c84250}\label{definitions_8h_aab192fb097a812fdf52226bc81c84250}} 
+\#define {\bfseries BUTTON\+\_\+\+IN\+\_\+\+ELEVATOR\+\_\+P}~0xb0
+\item 
+\mbox{\Hypertarget{definitions_8h_ae17c32a82db6794735889b64ff612b54}\label{definitions_8h_ae17c32a82db6794735889b64ff612b54}} 
+\#define {\bfseries BUTTON\+\_\+\+IN\+\_\+\+ELEVATOR\+\_\+1}~0xb1
+\item 
+\mbox{\Hypertarget{definitions_8h_a09b28153feb008213d4bbc9aeb949e58}\label{definitions_8h_a09b28153feb008213d4bbc9aeb949e58}} 
+\#define {\bfseries BUTTON\+\_\+\+IN\+\_\+\+ELEVATOR\+\_\+2}~0xb2
+\item 
+\mbox{\Hypertarget{definitions_8h_a138aeef7fefe6fcde6a2460acc62da3e}\label{definitions_8h_a138aeef7fefe6fcde6a2460acc62da3e}} 
+\#define {\bfseries BUTTON\+\_\+\+IN\+\_\+\+ELEVATOR\+\_\+3}~0xb3
+\item 
+\mbox{\Hypertarget{definitions_8h_ab8c3b23e3baafbb2ddaa610a48c72ff5}\label{definitions_8h_ab8c3b23e3baafbb2ddaa610a48c72ff5}} 
+\#define {\bfseries BUTTON\+\_\+\+IN\+\_\+\+ELEVATOR\+\_\+4}~0xb4
+\item 
+\mbox{\Hypertarget{definitions_8h_a30d2043ca397843e08c43ade3aaee5b2}\label{definitions_8h_a30d2043ca397843e08c43ade3aaee5b2}} 
+\#define {\bfseries START\+\_\+\+BYTE}~0x\+A0
+\item 
+\mbox{\Hypertarget{definitions_8h_a807b8707520a68f40e0f2da92c23cf93}\label{definitions_8h_a807b8707520a68f40e0f2da92c23cf93}} 
+\#define {\bfseries ACK\+\_\+\+BYTE}~0x\+A1
+\item 
+\mbox{\Hypertarget{definitions_8h_ab9fbaf48216a38308e27e5a705f34b82}\label{definitions_8h_ab9fbaf48216a38308e27e5a705f34b82}} 
+\#define {\bfseries MY\+\_\+\+ADDRESS}~0x00
+\item 
+\mbox{\Hypertarget{definitions_8h_ab9cf4c54d4e92637e67f6029ad7a4851}\label{definitions_8h_ab9cf4c54d4e92637e67f6029ad7a4851}} 
+\#define {\bfseries ENGINE\+\_\+\+ADDRESS}~0xf1
+\item 
+\mbox{\Hypertarget{definitions_8h_a4ca81d2ed30b078af79247955e001fbf}\label{definitions_8h_a4ca81d2ed30b078af79247955e001fbf}} 
+\#define {\bfseries ENGINE\+\_\+\+UP}~70
+\item 
+\mbox{\Hypertarget{definitions_8h_afbbe216b5be5d03743d0419cda38803a}\label{definitions_8h_afbbe216b5be5d03743d0419cda38803a}} 
+\#define {\bfseries ENGINE\+\_\+\+DOWN}~-\/70
+\item 
+\mbox{\Hypertarget{definitions_8h_a9afd361fb2368e544442f110cd825171}\label{definitions_8h_a9afd361fb2368e544442f110cd825171}} 
+\#define {\bfseries ENGINE\+\_\+\+STOP}~0
+\item 
+\mbox{\Hypertarget{definitions_8h_a32a748ba45b54573360f16dc0aa78b5d}\label{definitions_8h_a32a748ba45b54573360f16dc0aa78b5d}} 
+\#define {\bfseries DISPLAY\+\_\+\+ADDRESS}~0x30
+\item 
+\mbox{\Hypertarget{definitions_8h_ae050daab36d3f3b8217bb04b48fca043}\label{definitions_8h_ae050daab36d3f3b8217bb04b48fca043}} 
+\#define {\bfseries ELEVATOR\+\_\+\+ADDRESS}~0xf0
+\item 
+\mbox{\Hypertarget{definitions_8h_a899b80c7ddf615031d2a02d89ab3f6ff}\label{definitions_8h_a899b80c7ddf615031d2a02d89ab3f6ff}} 
+\#define {\bfseries TERMINAL\+\_\+\+ADDRESS}~0xd0
+\item 
+\mbox{\Hypertarget{definitions_8h_ac0f1dbf5055ae30fdf40bb08b3792146}\label{definitions_8h_ac0f1dbf5055ae30fdf40bb08b3792146}} 
+\#define {\bfseries LED\+\_\+\+IN\+\_\+\+ELEVATOR\+\_\+\+P\+\_\+\+ADDRESS}~0x20
+\item 
+\mbox{\Hypertarget{definitions_8h_ab4e62eba1b623ca55e37690a905439fe}\label{definitions_8h_ab4e62eba1b623ca55e37690a905439fe}} 
+\#define {\bfseries LED\+\_\+\+IN\+\_\+\+ELEVATOR\+\_\+1\+\_\+\+ADDRESS}~0x21
+\item 
+\mbox{\Hypertarget{definitions_8h_af845b9974d601210b11d6cb65efec804}\label{definitions_8h_af845b9974d601210b11d6cb65efec804}} 
+\#define {\bfseries LED\+\_\+\+IN\+\_\+\+ELEVATOR\+\_\+2\+\_\+\+ADDRESS}~0x22
+\item 
+\mbox{\Hypertarget{definitions_8h_a4e51c8843d92c4de78a0eee58573eaba}\label{definitions_8h_a4e51c8843d92c4de78a0eee58573eaba}} 
+\#define {\bfseries LED\+\_\+\+IN\+\_\+\+ELEVATOR\+\_\+3\+\_\+\+ADDRESS}~0x23
+\item 
+\mbox{\Hypertarget{definitions_8h_a2d934dbb4ade098975d5bef425d25110}\label{definitions_8h_a2d934dbb4ade098975d5bef425d25110}} 
+\#define {\bfseries LED\+\_\+\+IN\+\_\+\+ELEVATOR\+\_\+4\+\_\+\+ADDRESS}~0x24
+\item 
+\mbox{\Hypertarget{definitions_8h_a6ce0e60b531bac5848e100a4e8d16149}\label{definitions_8h_a6ce0e60b531bac5848e100a4e8d16149}} 
+\#define {\bfseries FLOOR\+\_\+\+P\+\_\+\+SWITCH}~0xe0
+\item 
+\mbox{\Hypertarget{definitions_8h_a0efc024bc819bf1d05d74404f5bed4ac}\label{definitions_8h_a0efc024bc819bf1d05d74404f5bed4ac}} 
+\#define {\bfseries FLOOR\+\_\+1\+\_\+\+SWITCH}~0xe1
+\item 
+\mbox{\Hypertarget{definitions_8h_af998582219701d1354c8d9e9fdb4b1d1}\label{definitions_8h_af998582219701d1354c8d9e9fdb4b1d1}} 
+\#define {\bfseries FLOOR\+\_\+2\+\_\+\+SWITCH}~0xe2
+\item 
+\mbox{\Hypertarget{definitions_8h_a4890c4f06adcc07d0fd1c53895d6f06b}\label{definitions_8h_a4890c4f06adcc07d0fd1c53895d6f06b}} 
+\#define {\bfseries FLOOR\+\_\+3\+\_\+\+SWITCH}~0xe3
+\item 
+\mbox{\Hypertarget{definitions_8h_a97bf92afc03c95ab2874ad115b54503b}\label{definitions_8h_a97bf92afc03c95ab2874ad115b54503b}} 
+\#define {\bfseries FLOOR\+\_\+4\+\_\+\+SWITCH}~0xe4
+\item 
+\mbox{\Hypertarget{definitions_8h_a1a3db9e17f03a048c0293d0b46dea326}\label{definitions_8h_a1a3db9e17f03a048c0293d0b46dea326}} 
+\#define {\bfseries LOCK\+\_\+\+THE\+\_\+\+DOOR}~0x01
+\item 
+\mbox{\Hypertarget{definitions_8h_ab5fa748fd4fe7b9e8a0f5aba6c40913b}\label{definitions_8h_ab5fa748fd4fe7b9e8a0f5aba6c40913b}} 
+\#define {\bfseries UNLOCK\+\_\+\+THE\+\_\+\+DOOR}~0x00
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structelevator__state}{elevator\+\_\+state}} \mbox{\hyperlink{definitions_8h_adafb5064646fb2f2832fa9c5f9544757}{Elevator\+State}}
+\item 
+typedef struct \mbox{\hyperlink{structfloor}{floor}} \mbox{\hyperlink{definitions_8h_a2c3f0b95f940f8a2a0e3614bc6c4653c}{Floor}}
+\item 
+typedef struct \mbox{\hyperlink{structdisplay}{display}} \mbox{\hyperlink{definitions_8h_a9ce75061de2eded7048978210464edd6}{Display}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{definitions_8h_a7ec74a6d9c7d91f30b3476f2ccc2b2b8}{Elevator\+Delay\+State}} \{ \newline
+\mbox{\hyperlink{definitions_8h_a7ec74a6d9c7d91f30b3476f2ccc2b2b8a46bf19070a19def35dc6a12d3080c49e}{ARRIWING}}
+, \mbox{\hyperlink{definitions_8h_a7ec74a6d9c7d91f30b3476f2ccc2b2b8a757971c0bc5a1972d5f1b1be2c0e2087}{WAITING}}
+, \mbox{\hyperlink{definitions_8h_a7ec74a6d9c7d91f30b3476f2ccc2b2b8a898cbaf2e64179c5cfdff4d10b3728c1}{STOPPING}}
+, \mbox{\hyperlink{definitions_8h_a7ec74a6d9c7d91f30b3476f2ccc2b2b8ad9f2b624542dc2f8e5d481a5926c4126}{LOCKING}}
+, \newline
+\mbox{\hyperlink{definitions_8h_a7ec74a6d9c7d91f30b3476f2ccc2b2b8a48ae2602987a33f9449d8919905f64cb}{UNLOCKING}}
+, \mbox{\hyperlink{definitions_8h_a7ec74a6d9c7d91f30b3476f2ccc2b2b8a16ebdcb23eb5337fd5bc598fa8d6035d}{MOVING}}
+ \}
+\item 
+enum \mbox{\hyperlink{definitions_8h_a78fcbde4d2251075617fb22730589ca4}{Elevator\+Direction}} \{ {\bfseries UP}
+, {\bfseries DOWN}
+, {\bfseries NONE}
+ \}
+\item 
+enum \mbox{\hyperlink{definitions_8h_ac6912460c5b2758b93e165e45473c433}{Destination\+State}} \{ {\bfseries DESTINATION\+\_\+\+VISIT}
+, {\bfseries DESTINATION\+\_\+\+IGNORE}
+ \}
+\item 
+enum \mbox{\hyperlink{definitions_8h_a138fc8ead0a2640db83244700a62aabb}{Message\+Reading\+State}} \{ \newline
+\mbox{\hyperlink{definitions_8h_a138fc8ead0a2640db83244700a62aabbaaa6a81c45b15bb269b0716539d989f3a}{WAITING\+\_\+\+START\+\_\+\+BYTE}}
+, \mbox{\hyperlink{definitions_8h_a138fc8ead0a2640db83244700a62aabba170c24a187e6cea8564c68dc614d61bb}{WAITING\+\_\+\+RECEIVER\+\_\+\+ADDRESS}}
+, \mbox{\hyperlink{definitions_8h_a138fc8ead0a2640db83244700a62aabbac31817441c1d3026cd0a1cc547d9f7ae}{WAITING\+\_\+\+SENDER\+\_\+\+ADDRESS}}
+, \mbox{\hyperlink{definitions_8h_a138fc8ead0a2640db83244700a62aabba8825dbbb70bea2c382b2e9ee215b1527}{WAITING\+\_\+\+DATA\+\_\+\+LENGHT}}
+, \newline
+\mbox{\hyperlink{definitions_8h_a138fc8ead0a2640db83244700a62aabba5a43836fe893b81b44d364533f36d85d}{WAITING\+\_\+\+DATA}}
+, \mbox{\hyperlink{definitions_8h_a138fc8ead0a2640db83244700a62aabba5cbd7d0e9166ba87b8849f42e24aa8c3}{WAITING\+\_\+\+CRC}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{definitions_8h_a2c3f0b95f940f8a2a0e3614bc6c4653c}{Floor}} \mbox{\hyperlink{definitions_8h_a1c895b2cd23e038bac3266457f950254}{floors}} \mbox{[}5\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Obsahuje definicie a typy. 
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{definitions_8h_a9ce75061de2eded7048978210464edd6}\label{definitions_8h_a9ce75061de2eded7048978210464edd6}} 
+\index{definitions.h@{definitions.h}!Display@{Display}}
+\index{Display@{Display}!definitions.h@{definitions.h}}
+\doxysubsubsection{\texorpdfstring{Display}{Display}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structdisplay}{display}} \mbox{\hyperlink{definitions_8h_a9ce75061de2eded7048978210464edd6}{Display}}}
+
+Tato struktura prezentuje aktualny stav displeya, ktory zobrazuje poschodie a smer \mbox{\Hypertarget{definitions_8h_adafb5064646fb2f2832fa9c5f9544757}\label{definitions_8h_adafb5064646fb2f2832fa9c5f9544757}} 
+\index{definitions.h@{definitions.h}!ElevatorState@{ElevatorState}}
+\index{ElevatorState@{ElevatorState}!definitions.h@{definitions.h}}
+\doxysubsubsection{\texorpdfstring{ElevatorState}{ElevatorState}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structelevator__state}{elevator\+\_\+state}} \mbox{\hyperlink{definitions_8h_adafb5064646fb2f2832fa9c5f9544757}{Elevator\+State}}}
+
+Tato struktura reprezentuje aktualny stav vytahu \mbox{\Hypertarget{definitions_8h_a2c3f0b95f940f8a2a0e3614bc6c4653c}\label{definitions_8h_a2c3f0b95f940f8a2a0e3614bc6c4653c}} 
+\index{definitions.h@{definitions.h}!Floor@{Floor}}
+\index{Floor@{Floor}!definitions.h@{definitions.h}}
+\doxysubsubsection{\texorpdfstring{Floor}{Floor}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structfloor}{floor}} \mbox{\hyperlink{definitions_8h_a2c3f0b95f940f8a2a0e3614bc6c4653c}{Floor}}}
+
+Tato struktura reprezentuje detaili poschodia 
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{definitions_8h_ac6912460c5b2758b93e165e45473c433}\label{definitions_8h_ac6912460c5b2758b93e165e45473c433}} 
+\index{definitions.h@{definitions.h}!DestinationState@{DestinationState}}
+\index{DestinationState@{DestinationState}!definitions.h@{definitions.h}}
+\doxysubsubsection{\texorpdfstring{DestinationState}{DestinationState}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{definitions_8h_ac6912460c5b2758b93e165e45473c433}{Destination\+State}}}
+
+Tento ciselnik reprezentuje to ci sa ma navstivit poschodie \mbox{\Hypertarget{definitions_8h_a7ec74a6d9c7d91f30b3476f2ccc2b2b8}\label{definitions_8h_a7ec74a6d9c7d91f30b3476f2ccc2b2b8}} 
+\index{definitions.h@{definitions.h}!ElevatorDelayState@{ElevatorDelayState}}
+\index{ElevatorDelayState@{ElevatorDelayState}!definitions.h@{definitions.h}}
+\doxysubsubsection{\texorpdfstring{ElevatorDelayState}{ElevatorDelayState}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{definitions_8h_a7ec74a6d9c7d91f30b3476f2ccc2b2b8}{Elevator\+Delay\+State}}}
+
+Tento ciselnik eprezentuje stav vytahu \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ARRIWING@{ARRIWING}!definitions.h@{definitions.h}}\index{definitions.h@{definitions.h}!ARRIWING@{ARRIWING}}}\mbox{\Hypertarget{definitions_8h_a7ec74a6d9c7d91f30b3476f2ccc2b2b8a46bf19070a19def35dc6a12d3080c49e}\label{definitions_8h_a7ec74a6d9c7d91f30b3476f2ccc2b2b8a46bf19070a19def35dc6a12d3080c49e}} 
+ARRIWING&Vytah prichadza na cielove podlazie \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WAITING@{WAITING}!definitions.h@{definitions.h}}\index{definitions.h@{definitions.h}!WAITING@{WAITING}}}\mbox{\Hypertarget{definitions_8h_a7ec74a6d9c7d91f30b3476f2ccc2b2b8a757971c0bc5a1972d5f1b1be2c0e2087}\label{definitions_8h_a7ec74a6d9c7d91f30b3476f2ccc2b2b8a757971c0bc5a1972d5f1b1be2c0e2087}} 
+WAITING&Vytah stoji na poschodi a caka \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STOPPING@{STOPPING}!definitions.h@{definitions.h}}\index{definitions.h@{definitions.h}!STOPPING@{STOPPING}}}\mbox{\Hypertarget{definitions_8h_a7ec74a6d9c7d91f30b3476f2ccc2b2b8a898cbaf2e64179c5cfdff4d10b3728c1}\label{definitions_8h_a7ec74a6d9c7d91f30b3476f2ccc2b2b8a898cbaf2e64179c5cfdff4d10b3728c1}} 
+STOPPING&Vytah zastavuje na poschodi \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LOCKING@{LOCKING}!definitions.h@{definitions.h}}\index{definitions.h@{definitions.h}!LOCKING@{LOCKING}}}\mbox{\Hypertarget{definitions_8h_a7ec74a6d9c7d91f30b3476f2ccc2b2b8ad9f2b624542dc2f8e5d481a5926c4126}\label{definitions_8h_a7ec74a6d9c7d91f30b3476f2ccc2b2b8ad9f2b624542dc2f8e5d481a5926c4126}} 
+LOCKING&Vytah zatvara dvere \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UNLOCKING@{UNLOCKING}!definitions.h@{definitions.h}}\index{definitions.h@{definitions.h}!UNLOCKING@{UNLOCKING}}}\mbox{\Hypertarget{definitions_8h_a7ec74a6d9c7d91f30b3476f2ccc2b2b8a48ae2602987a33f9449d8919905f64cb}\label{definitions_8h_a7ec74a6d9c7d91f30b3476f2ccc2b2b8a48ae2602987a33f9449d8919905f64cb}} 
+UNLOCKING&Vytah otvara dvere \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MOVING@{MOVING}!definitions.h@{definitions.h}}\index{definitions.h@{definitions.h}!MOVING@{MOVING}}}\mbox{\Hypertarget{definitions_8h_a7ec74a6d9c7d91f30b3476f2ccc2b2b8a16ebdcb23eb5337fd5bc598fa8d6035d}\label{definitions_8h_a7ec74a6d9c7d91f30b3476f2ccc2b2b8a16ebdcb23eb5337fd5bc598fa8d6035d}} 
+MOVING&Vytah cestuje na podlazie \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{definitions_8h_a78fcbde4d2251075617fb22730589ca4}\label{definitions_8h_a78fcbde4d2251075617fb22730589ca4}} 
+\index{definitions.h@{definitions.h}!ElevatorDirection@{ElevatorDirection}}
+\index{ElevatorDirection@{ElevatorDirection}!definitions.h@{definitions.h}}
+\doxysubsubsection{\texorpdfstring{ElevatorDirection}{ElevatorDirection}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{definitions_8h_a78fcbde4d2251075617fb22730589ca4}{Elevator\+Direction}}}
+
+Tento ciselnik reprezentuje smer vytahu \mbox{\Hypertarget{definitions_8h_a138fc8ead0a2640db83244700a62aabb}\label{definitions_8h_a138fc8ead0a2640db83244700a62aabb}} 
+\index{definitions.h@{definitions.h}!MessageReadingState@{MessageReadingState}}
+\index{MessageReadingState@{MessageReadingState}!definitions.h@{definitions.h}}
+\doxysubsubsection{\texorpdfstring{MessageReadingState}{MessageReadingState}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{definitions_8h_a138fc8ead0a2640db83244700a62aabb}{Message\+Reading\+State}}}
+
+Tento ciselnik reprezentuje stav citania spravy \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WAITING\_START\_BYTE@{WAITING\_START\_BYTE}!definitions.h@{definitions.h}}\index{definitions.h@{definitions.h}!WAITING\_START\_BYTE@{WAITING\_START\_BYTE}}}\mbox{\Hypertarget{definitions_8h_a138fc8ead0a2640db83244700a62aabbaaa6a81c45b15bb269b0716539d989f3a}\label{definitions_8h_a138fc8ead0a2640db83244700a62aabbaaa6a81c45b15bb269b0716539d989f3a}} 
+WAITING\+\_\+\+START\+\_\+\+BYTE&Caka na pociatocny byte \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WAITING\_RECEIVER\_ADDRESS@{WAITING\_RECEIVER\_ADDRESS}!definitions.h@{definitions.h}}\index{definitions.h@{definitions.h}!WAITING\_RECEIVER\_ADDRESS@{WAITING\_RECEIVER\_ADDRESS}}}\mbox{\Hypertarget{definitions_8h_a138fc8ead0a2640db83244700a62aabba170c24a187e6cea8564c68dc614d61bb}\label{definitions_8h_a138fc8ead0a2640db83244700a62aabba170c24a187e6cea8564c68dc614d61bb}} 
+WAITING\+\_\+\+RECEIVER\+\_\+\+ADDRESS&Caka na adresu prijimatela \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WAITING\_SENDER\_ADDRESS@{WAITING\_SENDER\_ADDRESS}!definitions.h@{definitions.h}}\index{definitions.h@{definitions.h}!WAITING\_SENDER\_ADDRESS@{WAITING\_SENDER\_ADDRESS}}}\mbox{\Hypertarget{definitions_8h_a138fc8ead0a2640db83244700a62aabbac31817441c1d3026cd0a1cc547d9f7ae}\label{definitions_8h_a138fc8ead0a2640db83244700a62aabbac31817441c1d3026cd0a1cc547d9f7ae}} 
+WAITING\+\_\+\+SENDER\+\_\+\+ADDRESS&Caka na adresu odosielatela \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WAITING\_DATA\_LENGHT@{WAITING\_DATA\_LENGHT}!definitions.h@{definitions.h}}\index{definitions.h@{definitions.h}!WAITING\_DATA\_LENGHT@{WAITING\_DATA\_LENGHT}}}\mbox{\Hypertarget{definitions_8h_a138fc8ead0a2640db83244700a62aabba8825dbbb70bea2c382b2e9ee215b1527}\label{definitions_8h_a138fc8ead0a2640db83244700a62aabba8825dbbb70bea2c382b2e9ee215b1527}} 
+WAITING\+\_\+\+DATA\+\_\+\+LENGHT&Caka na dlzku dat \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WAITING\_DATA@{WAITING\_DATA}!definitions.h@{definitions.h}}\index{definitions.h@{definitions.h}!WAITING\_DATA@{WAITING\_DATA}}}\mbox{\Hypertarget{definitions_8h_a138fc8ead0a2640db83244700a62aabba5a43836fe893b81b44d364533f36d85d}\label{definitions_8h_a138fc8ead0a2640db83244700a62aabba5a43836fe893b81b44d364533f36d85d}} 
+WAITING\+\_\+\+DATA&Caka na data \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WAITING\_CRC@{WAITING\_CRC}!definitions.h@{definitions.h}}\index{definitions.h@{definitions.h}!WAITING\_CRC@{WAITING\_CRC}}}\mbox{\Hypertarget{definitions_8h_a138fc8ead0a2640db83244700a62aabba5cbd7d0e9166ba87b8849f42e24aa8c3}\label{definitions_8h_a138fc8ead0a2640db83244700a62aabba5cbd7d0e9166ba87b8849f42e24aa8c3}} 
+WAITING\+\_\+\+CRC&Caka kym mu posle CRC kod \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{definitions_8h_a1c895b2cd23e038bac3266457f950254}\label{definitions_8h_a1c895b2cd23e038bac3266457f950254}} 
+\index{definitions.h@{definitions.h}!floors@{floors}}
+\index{floors@{floors}!definitions.h@{definitions.h}}
+\doxysubsubsection{\texorpdfstring{floors}{floors}}
+{\footnotesize\ttfamily \mbox{\hyperlink{definitions_8h_a2c3f0b95f940f8a2a0e3614bc6c4653c}{Floor}} floors\mbox{[}5\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+V tejto premennej su ulozene detaili ku kazdemu poschodiu 

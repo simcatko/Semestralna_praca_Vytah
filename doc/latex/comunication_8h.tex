@@ -1,0 +1,70 @@
+\hypertarget{comunication_8h}{}\doxysection{source/comunication.h File Reference}
+\label{comunication_8h}\index{source/comunication.h@{source/comunication.h}}
+
+
+Kniznica.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$fsl\+\_\+lpsci.\+h$>$}\newline
+{\ttfamily \#include $<$definitions.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{comunication_8h_af403a4be78cf211b69ef941eee3848a3}{gencrc}} (uint8\+\_\+t $\ast$data, size\+\_\+t len)
+\item 
+void \mbox{\hyperlink{comunication_8h_a5b2b3c8922751f3f9378844699a05b2a}{set\+\_\+led}} (uint8\+\_\+t led\+\_\+on\+\_\+off, uint8\+\_\+t leds)
+\item 
+void \mbox{\hyperlink{comunication_8h_ab556493384c7d5e9344ed9a6175cc6d7}{engine}} (int32\+\_\+t speed)
+\item 
+void \mbox{\hyperlink{comunication_8h_a74563a20b698883a3a0425c73f460d3b}{ack}} (uint8\+\_\+t Adresa\+\_\+prijimatela)
+\item 
+void \mbox{\hyperlink{comunication_8h_aa2db5284c7c595879cfcb14d47356844}{display}} (uint8\+\_\+t direction, uint8\+\_\+t \mbox{\hyperlink{structfloor}{floor}})
+\item 
+void \mbox{\hyperlink{comunication_8h_a2453d0ddbdf1b9a0d91addba6003ee76}{terminal}} (char $\ast$message, size\+\_\+t length)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Kniznica. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{comunication_8h_a74563a20b698883a3a0425c73f460d3b}\label{comunication_8h_a74563a20b698883a3a0425c73f460d3b}} 
+\index{comunication.h@{comunication.h}!ack@{ack}}
+\index{ack@{ack}!comunication.h@{comunication.h}}
+\doxysubsubsection{\texorpdfstring{ack()}{ack()}}
+{\footnotesize\ttfamily void ack (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Adresa\+\_\+prijimatela }\end{DoxyParamCaption})}
+
+Sluzi na poslanie potvrdenia o prijati spravy \mbox{\Hypertarget{comunication_8h_aa2db5284c7c595879cfcb14d47356844}\label{comunication_8h_aa2db5284c7c595879cfcb14d47356844}} 
+\index{comunication.h@{comunication.h}!display@{display}}
+\index{display@{display}!comunication.h@{comunication.h}}
+\doxysubsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily void \mbox{\hyperlink{structdisplay}{display}} (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{direction,  }\item[{uint8\+\_\+t}]{floor }\end{DoxyParamCaption})}
+
+Sluzi na naformatovanie a odoslanie spravy pre display \mbox{\Hypertarget{comunication_8h_ab556493384c7d5e9344ed9a6175cc6d7}\label{comunication_8h_ab556493384c7d5e9344ed9a6175cc6d7}} 
+\index{comunication.h@{comunication.h}!engine@{engine}}
+\index{engine@{engine}!comunication.h@{comunication.h}}
+\doxysubsubsection{\texorpdfstring{engine()}{engine()}}
+{\footnotesize\ttfamily void engine (\begin{DoxyParamCaption}\item[{int32\+\_\+t}]{speed }\end{DoxyParamCaption})}
+
+Sluzi na naformatovanie a odoslanie spravy motoru \mbox{\Hypertarget{comunication_8h_af403a4be78cf211b69ef941eee3848a3}\label{comunication_8h_af403a4be78cf211b69ef941eee3848a3}} 
+\index{comunication.h@{comunication.h}!gencrc@{gencrc}}
+\index{gencrc@{gencrc}!comunication.h@{comunication.h}}
+\doxysubsubsection{\texorpdfstring{gencrc()}{gencrc()}}
+{\footnotesize\ttfamily uint8\+\_\+t gencrc (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{data,  }\item[{size\+\_\+t}]{len }\end{DoxyParamCaption})}
+
+Vypocet kontrolneho suctu prevzate \href{https://www.devcoons.com/crc8/}{\texttt{ https\+://www.\+devcoons.\+com/crc8/}} \mbox{\Hypertarget{comunication_8h_a5b2b3c8922751f3f9378844699a05b2a}\label{comunication_8h_a5b2b3c8922751f3f9378844699a05b2a}} 
+\index{comunication.h@{comunication.h}!set\_led@{set\_led}}
+\index{set\_led@{set\_led}!comunication.h@{comunication.h}}
+\doxysubsubsection{\texorpdfstring{set\_led()}{set\_led()}}
+{\footnotesize\ttfamily void set\+\_\+led (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{led\+\_\+on\+\_\+off,  }\item[{uint8\+\_\+t}]{leds }\end{DoxyParamCaption})}
+
+Sluzi na naformatovanie a odoslanie spravy pre led (pouzivame aj na posielanie sprav dveram) \mbox{\Hypertarget{comunication_8h_a2453d0ddbdf1b9a0d91addba6003ee76}\label{comunication_8h_a2453d0ddbdf1b9a0d91addba6003ee76}} 
+\index{comunication.h@{comunication.h}!terminal@{terminal}}
+\index{terminal@{terminal}!comunication.h@{comunication.h}}
+\doxysubsubsection{\texorpdfstring{terminal()}{terminal()}}
+{\footnotesize\ttfamily void terminal (\begin{DoxyParamCaption}\item[{char $\ast$}]{message,  }\item[{size\+\_\+t}]{length }\end{DoxyParamCaption})}
+
+Sluzi na naformatovanie a odoslanie spravy pre terminal 

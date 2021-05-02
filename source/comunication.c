@@ -1,8 +1,13 @@
-#include "komunikacia.h"
+/*!
+ * \file handle_comunication.c
+ * \brief Subor obsahuje funkcie na posielanie sprav vytahu
+ */
+#include <comunication.h>
 
 
-
-
+/*!
+ * Vypocet kontrolneho suctu prevzate https://www.devcoons.com/crc8/
+ */
 uint8_t gencrc(uint8_t *data, size_t len) {
 	uint8_t crc = 0;
 	for (uint8_t i = 0; i < len; ++i) {
@@ -18,6 +23,9 @@ uint8_t gencrc(uint8_t *data, size_t len) {
 	return crc;
 }
 
+/*!
+ * Sluzi na naformatovanie a odoslanie spravy pre led (pouzivame aj na posielanie sprav dveram)
+ */
 void set_led(uint8_t led_on_off, uint8_t leds) {
 	uint8_t vypocetcrc[] = { leds, MY_ADDRESS, led_on_off };
 	uint8_t vysledok = gencrc(vypocetcrc, sizeof(vypocetcrc));
@@ -25,7 +33,9 @@ void set_led(uint8_t led_on_off, uint8_t leds) {
 			vysledok };
 	LPSCI_WriteBlocking(UART0, led_packet_header, sizeof(led_packet_header));
 }
-
+/*!
+ * Sluzi na naformatovanie a odoslanie spravy motoru
+ */
 void engine(int32_t speed) {
 	uint8_t *speed8 = (uint8_t*)&speed;
 	uint8_t vypocetcrc[] = { ENGINE_ADDRESS, MY_ADDRESS, 0x02, speed8[0],
@@ -36,14 +46,9 @@ void engine(int32_t speed) {
 	LPSCI_WriteBlocking(UART0, packet, sizeof(packet));
 }
 
-void engine_speed() {
-	uint8_t vypocetcrc[] = { ENGINE_ADDRESS, MY_ADDRESS, 0x04 };
-	uint8_t vysledokcrc = gencrc(vypocetcrc, sizeof(vypocetcrc));
-	uint8_t packet[] = { START_BYTE, ENGINE_ADDRESS, MY_ADDRESS, 0x01, 0x03,
-			vysledokcrc };
-	LPSCI_WriteBlocking(UART0, packet, sizeof(packet));
-}
-
+/*!
+ * Sluzi na poslanie potvrdenia o prijati spravy
+ */
 void ack(uint8_t Adresa_prijimatela) {
 	uint8_t vypocetcrc[] = { Adresa_prijimatela, MY_ADDRESS };
 	uint8_t vysledokcrc = gencrc(vypocetcrc, sizeof(vypocetcrc));
@@ -52,14 +57,9 @@ void ack(uint8_t Adresa_prijimatela) {
 	LPSCI_WriteBlocking(UART0, packet, sizeof(packet));
 }
 
-void door(uint8_t unlock_open_door) {
-	uint8_t vypocetcrc[] = { ELEVATOR_ADDRESS, MY_ADDRESS, unlock_open_door };
-	uint8_t vysledokcrc = gencrc(vypocetcrc, sizeof(vypocetcrc));
-	uint8_t packet[] = { START_BYTE, ELEVATOR_ADDRESS, MY_ADDRESS, 0x01,
-			unlock_open_door, vysledokcrc };
-	LPSCI_WriteBlocking(UART0, packet, sizeof(packet));
-}
-
+/*!
+ * Sluzi na naformatovanie a odoslanie spravy pre display
+ */
 void display(uint8_t direction, uint8_t floor) {
 	uint8_t vypocetcrc[] = { DISPLAY_ADDRESS, MY_ADDRESS, direction, floor };
 	uint8_t vysledokcrc = gencrc(vypocetcrc, sizeof(vypocetcrc));
@@ -67,6 +67,9 @@ void display(uint8_t direction, uint8_t floor) {
 	LPSCI_WriteBlocking(UART0, packet, sizeof(packet));
 }
 
+/*!
+ * Sluzi na naformatovanie a odoslanie spravy pre terminal
+ */
 void terminal(char *message, size_t length) {
 	uint8_t vypocetcrc[length + 2];
 	vypocetcrc[0] = TERMINAL_ADDRESS;

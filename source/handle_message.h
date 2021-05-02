@@ -1,3 +1,8 @@
+/**
+ * @file    handle_message.h
+ * @brief   Kniznica
+ */
+
 #include <definitions.h>
 #include <stdint.h>
 #include <fsl_lpsci.h>

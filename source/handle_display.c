@@ -1,7 +1,15 @@
+/*!
+ * \file handle_display.c
+ * \brief Subor obsahuje funkcie na pracu s displayom
+ */
+#include <comunication.h>
 #include "handle_display.h"
 #include "definitions.h"
-#include "komunikacia.h"
 
+/*!
+ * Funkcia porovnáva stav vytahu a stav displaya
+ * posiela spravy vytahu aby boli tieto stavy rovnake
+ */
 void handle_display(ElevatorState *elevator_state, Display *display_state) {
 	if (elevator_state->direction != display_state->direction
 			|| elevator_state->position != display_state->floor) {
